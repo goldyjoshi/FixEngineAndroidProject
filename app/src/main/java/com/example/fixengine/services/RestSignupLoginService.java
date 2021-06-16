@@ -3,6 +3,7 @@ package com.example.fixengine.services;
 import android.util.Log;
 
 import com.example.fixengine.model.TradeDetails;
+import com.example.fixengine.model.TraderLoginDetails;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,5 +41,23 @@ public class RestSignupLoginService {
                 System.out.println("Failed to Register with exception :" + t.getMessage());
             }
         } );
+    }
+
+
+    /***..........***/
+
+    public void login(TraderLoginDetails traderLoginDetails) {
+        Call<TraderLoginDetails> traderLoginDetailsCall = iSignupLoginServiceAPI.login( traderLoginDetails );
+        traderLoginDetailsCall.enqueue( (new Callback<TraderLoginDetails>() {
+            @Override
+            public void onResponse(Call<TraderLoginDetails> call, Response<TraderLoginDetails> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<TraderLoginDetails> call, Throwable t) {
+
+            }
+        }) );
     }
 }
