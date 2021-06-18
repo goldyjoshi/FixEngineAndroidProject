@@ -29,7 +29,7 @@
         android:layout_width="97dp"
         android:layout_height="31dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="46dp"
         android:text="Quantity"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +63,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
-        android:text="Instrument"
+        android:text="Symbol"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AccountIdTextView" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/spinnerAccountID"
         android:layout_width="255dp"
         android:layout_height="34dp"
         android:layout_marginTop="200dp"
@@ -77,14 +77,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner2"
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/spinnerSymbol"
         android:layout_width="254dp"
         android:layout_height="34dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAccountID" />
 
     <RadioButton
         android:id="@+id/sellRadioButton"
@@ -95,7 +95,7 @@
         android:text="Sell"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSymbol" />
 
     <RadioButton
         android:id="@+id/buyRadioButton"
@@ -106,10 +106,10 @@
         android:text="Buy"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/sellRadioButton"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSymbol" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/quantityEditText"
         android:layout_width="243dp"
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
@@ -123,12 +123,14 @@
         android:id="@+id/submitButton"
         android:layout_width="144dp"
         android:layout_height="51dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:text="Submit"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantityEditText" />
 
     <TextView
         android:id="@+id/createOrderTextView"
@@ -146,11 +148,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="24dp"
         android:text="Home"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/QuantityTextView" />
 
     <Button
         android:id="@+id/button6"

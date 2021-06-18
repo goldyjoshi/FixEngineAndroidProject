@@ -15,9 +15,9 @@
         android:theme="@style/Theme.FixEngine">
         <activity android:name=".TradeOptionStatusPortofolioActivity"></activity>
         <activity android:name=".SubmitOrderActivity" />
-        <activity android:name=".MainActivityPage" />
+<!--        <activity android:name=".MainActivityPage" />-->
         <activity android:name=".SignupActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivityPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
