@@ -40,14 +40,12 @@ public class SignupActivity extends AppCompatActivity {
                 restSignupLoginService.signup(tradeDetails);
                 Toast.makeText( SignupActivity.this, "you have successfully signup", Toast.LENGTH_SHORT ).show();
 
-                Intent intentSubmitOrder = new Intent(SignupActivity.this, MainActivityPage.class);
-                startActivity(intentSubmitOrder);
+                Intent intentLoginScreen = new Intent(SignupActivity.this, MainActivityPage.class);
+                startActivity(intentLoginScreen);
 
             }
         } );
     }
-
-
 
 
 }

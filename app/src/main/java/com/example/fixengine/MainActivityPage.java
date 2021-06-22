@@ -17,6 +17,7 @@ public class MainActivityPage extends AppCompatActivity {
         setContentView( R.layout.activity_main_page );
         signupPage();
         loginPage();
+
     }
 
     private  void signupPage() {
@@ -24,9 +25,7 @@ public class MainActivityPage extends AppCompatActivity {
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent mainActivityIntent = new Intent( MainActivityPage.this, SignupActivity.class);
-//                startActivity( mainActivityIntent );
-                Intent mainActivityIntent = new Intent( MainActivityPage.this, SubmitOrderActivity.class);
+                Intent mainActivityIntent = new Intent( MainActivityPage.this, SignupActivity.class);
                 startActivity( mainActivityIntent );
             }
 
@@ -43,4 +42,5 @@ public class MainActivityPage extends AppCompatActivity {
             }
         } );
     }
+
 }
