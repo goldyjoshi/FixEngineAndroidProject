@@ -10,12 +10,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ISignupLoginServiceAPI {
-
     @POST("signup")
     Call<TradeDetails> signup(@Body TradeDetails tradeDetails);
-
-
-
 
     @GET("login")
     Call<TraderLoginDetails> login(@Body TraderLoginDetails traderLoginDetails);

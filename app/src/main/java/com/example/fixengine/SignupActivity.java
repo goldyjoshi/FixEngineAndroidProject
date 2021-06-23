@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fixengine.model.TradeDetails;
@@ -28,28 +27,25 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signupActivity() {
-
-
+        
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String traderId = ((EditText) findViewById( R.id.textTraderId )).getText().toString();
                 String traderEmailId = ((EditText) findViewById( R.id.textEmailId )).getText().toString();
                 String traderPassword = ((EditText) findViewById( R.id.textPassword )).getText().toString();
-//                Toast.makeText( SignupActivity.this, "you have successfully signup", Toast.LENGTH_SHORT ).show();
 
-                TradeDetails tradeDetails = new TradeDetails( traderId, traderEmailId, traderPassword );
-                restSignupLoginService.signup( tradeDetails );
-//                Intent intent= new Intent(SignupActivity.this, SubmitOrderActivity.class);
-//                startActivity( intent );
-//
 
+                TradeDetails tradeDetails = new TradeDetails(traderId, traderEmailId, traderPassword);
+                restSignupLoginService.signup(tradeDetails);
+                Toast.makeText( SignupActivity.this, "you have successfully signup", Toast.LENGTH_SHORT ).show();
+
+                Intent intentLoginScreen = new Intent(SignupActivity.this, MainActivityPage.class);
+                startActivity(intentLoginScreen);
 
             }
         } );
     }
-
-
 
 
 }

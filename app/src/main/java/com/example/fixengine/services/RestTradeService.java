@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.fixengine.ITradeJsonInterfaceAPI;
-import com.example.fixengine.MainActivity;
+import com.example.fixengine.MainActivityPage;
 import com.example.fixengine.Trade;
 
 import java.util.List;
@@ -15,6 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+//dont'use
 public class RestTradeService {
 
     private String tradesAsString = "";

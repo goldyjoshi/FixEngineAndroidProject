@@ -46,18 +46,18 @@ public class RestSignupLoginService {
 
     /***..........***/
 
-    public void login(TraderLoginDetails traderLoginDetails) {
-        Call<TraderLoginDetails> traderLoginDetailsCall = iSignupLoginServiceAPI.login( traderLoginDetails );
-        traderLoginDetailsCall.enqueue( (new Callback<TraderLoginDetails>() {
-            @Override
-            public void onResponse(Call<TraderLoginDetails> call, Response<TraderLoginDetails> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<TraderLoginDetails> call, Throwable t) {
-
-            }
-        }) );
-    }
+//    public void login(TraderLoginDetails traderLoginDetails) {
+//        Call<TraderLoginDetails> traderLoginDetailsCall = iSignupLoginServiceAPI.login( traderLoginDetails );
+//        traderLoginDetailsCall.enqueue( (new Callback<TraderLoginDetails>() {
+//            @Override
+//            public void onResponse(Call<TraderLoginDetails> call, Response<TraderLoginDetails> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<TraderLoginDetails> call, Throwable t) {
+//
+//            }
+//        }) );
+//    }
 }
