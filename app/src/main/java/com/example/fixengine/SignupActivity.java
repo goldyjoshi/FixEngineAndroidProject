@@ -14,6 +14,7 @@ import com.example.fixengine.services.RestSignupLoginService;
 
 public class SignupActivity extends AppCompatActivity {
     private Button signupButton;
+    private Button backFromSignup;
     private RestSignupLoginService restSignupLoginService;
 
     @Override
@@ -22,7 +23,9 @@ public class SignupActivity extends AppCompatActivity {
         setContentView( R.layout.activity_signup );
         restSignupLoginService = new RestSignupLoginService();
         signupButton = findViewById( R.id.signUPButton );
+        backFromSignup = findViewById( R.id.backFromOptionScreenButton );
         signupActivity();
+        backFromsignup();
 
     }
 
@@ -47,5 +50,15 @@ public class SignupActivity extends AppCompatActivity {
         } );
     }
 
+    public void  backFromsignup()
+    {
+        backFromSignup.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(SignupActivity.this, MainActivityPage.class);
+                startActivity( backIntent );
+            }
+        } );
+    }
 
 }

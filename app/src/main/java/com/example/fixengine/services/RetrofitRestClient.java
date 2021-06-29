@@ -4,16 +4,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitRestClient {
 
-    private Retrofit retrofit;
+    private Retrofit retrofitForTrade;
+    private Retrofit retrofitForBroker;
 
     public RetrofitRestClient() {
-        retrofit = retrofit = new Retrofit.Builder()
+        retrofitForTrade = new Retrofit.Builder()
                 .baseUrl( "http://192.168.0.94:8091/")
+                .addConverterFactory( GsonConverterFactory.create())
+                .build();
+
+        retrofitForBroker = new Retrofit.Builder()
+                .baseUrl( "http://192.168.0.94:8092/")
                 .addConverterFactory( GsonConverterFactory.create())
                 .build();
     }
 
     public Retrofit getRetrofitRestClient() {
-         return retrofit;
+         return retrofitForTrade;
+    }
+
+    public Retrofit getBrokerRetrofitRestClient() {
+        return retrofitForBroker;
     }
 }

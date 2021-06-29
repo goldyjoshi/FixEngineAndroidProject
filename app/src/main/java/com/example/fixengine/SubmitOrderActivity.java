@@ -22,6 +22,7 @@ import com.example.fixengine.services.SymbolService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class SubmitOrderActivity extends AppCompatActivity {
 
@@ -80,6 +81,8 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 EditText quantityEdittext = findViewById( R.id.quantityEditText );
                 accountSpinner.getSelectedItem();
                 SingleOrderRequest singleOrderRequest = new SingleOrderRequest();
+                String orderId = UUID.randomUUID().toString();
+                singleOrderRequest.setOrderId(orderId);
                 singleOrderRequest.setAccountId(accountSpinner.getSelectedItem().toString());
                 singleOrderRequest.setQuantity(Integer.valueOf(quantityEdittext.getText().toString()));
                 singleOrderRequest.setSide(side);
