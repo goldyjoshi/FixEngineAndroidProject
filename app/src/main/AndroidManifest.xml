@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FixEngine">
-        <activity android:name=".TradeOptionStatusPortofolioActivity"></activity>
-        <activity android:name=".SubmitOrderActivity" />
-<!--        <activity android:name=".MainActivityPage" />-->
+        <activity android:name=".OrderExecutionActivity"></activity>
+        <activity android:name=".OrderStatusActivity" />
+        <activity android:name=".TradeOptionStatusPortofolioActivity" />
+        <activity android:name=".SubmitOrderActivity" /> <!-- <activity android:name=".MainActivityPage" /> -->
         <activity android:name=".SignupActivity" />
         <activity android:name=".MainActivityPage">
             <intent-filter>

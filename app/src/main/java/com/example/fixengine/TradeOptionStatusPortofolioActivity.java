@@ -19,7 +19,19 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
         setContentView( R.layout.activity_trade_option_status_portofolio );
         submitOrder();
         backToMainpage();
+        openOrderStatusActivity();
+    }
 
+    public void openOrderStatusActivity() {
+        Button orderStatusButton = findViewById( R.id.orderStatusButton );
+        orderStatusButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent orderStatusIntent = new Intent( TradeOptionStatusPortofolioActivity.this, OrderStatusActivity.class );
+                startActivity( orderStatusIntent );
+                System.out.println("In order status activity");
+            }
+        } );
     }
 
     public void backToMainpage() {
