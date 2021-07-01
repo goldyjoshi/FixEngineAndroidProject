@@ -84,9 +84,11 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 String orderId = UUID.randomUUID().toString();
                 singleOrderRequest.setOrderId(orderId);
                 singleOrderRequest.setAccountId(accountSpinner.getSelectedItem().toString());
-                singleOrderRequest.setQuantity(Integer.valueOf(quantityEdittext.getText().toString()));
+                singleOrderRequest.setQuantity(Double.valueOf(quantityEdittext.getText().toString()));
                 singleOrderRequest.setSide(side);
                 singleOrderRequest.setSymbol(symbolSpinner.getSelectedItem().toString());
+                singleOrderRequest.setExecutedQuantity( 0 );
+                singleOrderRequest.setStatus( "Created" );
                 orderService.submitOrder( singleOrderRequest );
             }
         } );
