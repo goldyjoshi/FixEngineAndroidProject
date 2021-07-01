@@ -24,16 +24,27 @@ import java.util.List;
 public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.OrderStatusViewHolder>
         implements Filterable {
 
-    private Context context;
-    private List<SingleOrderRequest> orderList;
+    private Context context; //Variable of type Context
+    private List<SingleOrderRequest> orderList; //Variable to store the list of type single order request.
     private List<SingleOrderRequest> listOfAllOrders;
 
+    /***
+     * Constructor to initialized OrderStatusAdaptor data fields and its parent Adaptor and implements Filterable
+     * @param context unique value of context
+     * @param orderList unique representation of list of order
+     */
     public OrderStatusAdaptor(Context context, List<SingleOrderRequest> orderList) {
         this.context=context;
         this.orderList = orderList;
         this.listOfAllOrders = new ArrayList<>(orderList);
     }
 
+    /***
+     * This method is override from implements  Filterable class and its inflate the layout
+     * @param parent
+     * @param viewType
+     * @return viewHolder of type OrderStatusViewHolder
+     */
     @NonNull
     @Override
     public OrderStatusViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
@@ -43,6 +54,11 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         return viewHolder;
     }
 
+    /***
+     *
+     * @param holder
+     * @param position unique value of type int
+     */
     @Override
     public void onBindViewHolder(@NonNull OrderStatusViewHolder holder, int position) {
         SingleOrderRequest orderRequest = orderList.get(position);
@@ -51,15 +67,22 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         holder.accountId.setText(accountText);
         String quantityText = "Requested Quantity : " + String.valueOf(orderRequest.getQuantity());
         holder.quantity.setText(quantityText);
-        String executedQtyText = "Executed Quantity : 10000";
+        String executedQtyText = "Executed Quantity : " + orderRequest.getExecutedQuantity() ;
         holder.execQuantity.setText(executedQtyText);
         holder.symbol.setText(orderRequest.getSymbol());
         holder.side.setText(orderRequest.getSide());
+        holder.status.setText( orderRequest.getStatus() );
+        /***
+         * This setOnClickListener is used to make function on execute Button
+         */
         holder.execButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.println( Log.INFO, "in view holder", "on Click of button order id is  :"
                         + orderRequest );
+                /***
+                 * Intent is used to start new activity
+                 */
                 Intent execOrderActivity = new Intent(context, OrderExecutionActivity.class );
                 execOrderActivity.putExtra( "order", orderRequest);
                 context.startActivity(execOrderActivity);
@@ -67,11 +90,19 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         } );
     }
 
+    /***
+     * This method is used to get size of list of order.
+     * @return
+     */
     @Override
     public int getItemCount(){
         return orderList.size();
     }
 
+    /***
+     * This method is used to filter the Recyclerview  of list
+     * @return orderFilter of type Filter
+     */
     @Override
     public Filter getFilter() {
         return orderFilter;

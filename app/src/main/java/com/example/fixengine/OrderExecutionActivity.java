@@ -37,11 +37,11 @@ public class OrderExecutionActivity extends AppCompatActivity {
         TextView totalQtyId = findViewById( R.id.totalOrderQtyTextView );
         TextView execQtyId = findViewById( R.id.execOrderQtyTextView);
         orderId.setText("Id : " + singleOrderRequest.getOrderId());
-        status.setText("Status : Inprogress");
+        status.setText("Status : " + singleOrderRequest.getStatus());
         accountId.setText("Account Id : " + singleOrderRequest.getAccountId());
         symbol.setText(singleOrderRequest.getSide() + "    " + singleOrderRequest.getSymbol() );
-        totalQtyId.setText( String.valueOf( singleOrderRequest.getQuantity()) );
-        execQtyId.setText( "50000" );
+        totalQtyId.setText( "Total Quantity : " + String.valueOf( singleOrderRequest.getQuantity()) );
+        execQtyId.setText( "Executed Quantity : " + singleOrderRequest.getExecutedQuantity() );
     }
 
     private void setActionOnAcceptOrder() {
@@ -52,6 +52,7 @@ public class OrderExecutionActivity extends AppCompatActivity {
                 if (singleOrderRequest != null) {
                     ExecutionRequest executionRequest = new ExecutionRequest();
                     setExecutionDataFromOrder(executionRequest);
+                    executionRequest.setExecType( "new" );
                     executionService.sendExecution( executionRequest );
                 }
             }
