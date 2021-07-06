@@ -5,15 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.Toast;
 
 import com.example.fixengine.model.SingleOrderRequest;
 import com.example.fixengine.services.ClientAccountService;
@@ -41,8 +37,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
         addAccountsOnSpinner();
         addSymbolsOnSpinner();
         addSubmitButtonActionListner();
-
-        backToMainpage();
+        cancelOrder();
+//
+//        backToMainpage();
     }
 
     private void addSymbolsOnSpinner() {
@@ -67,7 +64,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     }
 
     public void addSubmitButtonActionListner() {
-        Button submitButton = findViewById(R.id.submitButton);
+        Button submitButton = findViewById(R.id.cancelButton );
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,13 +91,13 @@ public class SubmitOrderActivity extends AppCompatActivity {
         } );
     }
 
-    public void backToMainpage() {
-        Button backButoon = findViewById( R.id.backButtonFromSubmitOrder );
+    public void cancelOrder() {
+        Button backButoon = findViewById( R.id.cancelButton );
         backButoon.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backintent = new Intent(SubmitOrderActivity.this, TradeOptionStatusPortofolioActivity.class);
-                startActivity( backintent );
+                Intent cancelIntent = new Intent(SubmitOrderActivity.this, TradeOptionStatusPortofolioActivity.class);
+                startActivity( cancelIntent );
             }
         } );
     }

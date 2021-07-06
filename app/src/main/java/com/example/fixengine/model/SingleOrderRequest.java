@@ -4,14 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class SingleOrderRequest implements Parcelable {
-    private String orderId;
-    private String accountId;
-    private double quantity;
-    private String symbol;
-    private String side;
-    private double executedQuantity;
-    private String status;
+    private String orderId; //Variable to store unique value of order id
+    private String accountId; // Variable to store unique value of account id
+    private double quantity; //Variable to store quantity of order
+    private String symbol; //Variable to store name of symbol
+    private String side; //Variable to represent the value of side
+    private double executedQuantity; //Variable to represent the quantity of executed order
+    private String status; // variable to represnt the status of order
 
+    /***
+     * Empty construct for a class to create new instances
+     */
     public SingleOrderRequest() {
 
     }
@@ -109,42 +112,83 @@ public class SingleOrderRequest implements Parcelable {
 //        }
 //    };
 
+    /***
+     *  This method is used to get Id of order
+     * @return String vlaue of orderId
+     */
     public String getOrderId() {
         return orderId;
     }
 
+    /***
+     * This method is used to set Id of order
+     * @param orderId unique value of orderId
+     */
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
+    /***
+     *  This method is used to get unique account id
+     * @return String value of accountId
+     */
     public String getAccountId() {
         return accountId;
     }
 
+
+    /***
+     *  This method is used to set account id
+      * @param accountId unique represent the accountId
+     */
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
+    /***
+     *  This method is used to get quantity of order
+     * @return value of order quantity of double type
+     */
     public double getQuantity() {
         return quantity;
     }
 
+    /***
+     * This method is used to set quantity of order
+     * @param quantity to store the value
+     */
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
+    /***
+     *  This method is used to get name of symbol
+     * @return String value of symbol
+     */
     public String getSymbol() {
         return symbol;
     }
 
+    /***
+     * This method is used to set value of Symbol
+     * @param symbol represent uniquely
+     */
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
+    /***
+     *  This method is used to get value of side
+     * @return String value of side
+     */
     public String getSide() {
         return side;
     }
 
+    /***
+     * This method is used to set value of side
+     * @param side unique representation of side(buy or sell)
+     */
     public void setSide(String side) {
         this.side = side;
     }

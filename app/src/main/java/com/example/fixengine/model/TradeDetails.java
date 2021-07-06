@@ -1,7 +1,7 @@
 package com.example.fixengine.model;
 
 /***
- * This class is represent the fileds of trade details
+ * This class is represent the fields of trade details
  */
 public class TradeDetails {
     private String traderEmployeeId; // variable to store trder employee id of type String.

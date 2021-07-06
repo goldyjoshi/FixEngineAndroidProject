@@ -6,9 +6,43 @@ public class ExecutionRequest {
     private double totalQuantity; //to represent the quantity of orders symbol.
     private String symbol; //Variable to store the names of symbol.
     private String side; //To represent the trader side buy or sell.
-    private int executedQuantity; //To represent the how much Quantity executed of order
+    private double quantityRequestedForExec; // current request for execution.
+    private double previousExecQuantity;   // total of previously executed quantity.
     private double executionPrice; //Variable to represent the price of execution of order.
     private String execType; //To represent the type of execution of order.
+
+
+    /***
+     * This method is used to get quantity for current execution request.
+     * @return  double value of quantityRequestedForExec.
+     */
+    public double getQuantityRequestedForExec() {
+        return quantityRequestedForExec;
+    }
+
+    /***
+     * This method is used to set value of quantityRequestedForExec.
+     * @param quantityRequestedForExec
+     */
+    public void setQuantityRequestedForExec(double quantityRequestedForExec) {
+        this.quantityRequestedForExec = quantityRequestedForExec;
+    }
+
+    /***
+     * This method is used to get previously executed quantity on order.
+     * @return  double value of previousExecQuantity.
+     */
+    public double getPreviousExecQuantity() {
+        return previousExecQuantity;
+    }
+
+    /***
+     * This method is used to set value of previousExecQuantity.
+     * @param previousExecQuantity
+     */
+    public void setPreviousExecQuantity(double previousExecQuantity) {
+        this.previousExecQuantity = previousExecQuantity;
+    }
 
     /***
      * This method is used to get type of execution.
@@ -96,22 +130,6 @@ public class ExecutionRequest {
      */
     public void setSide(String side) {
         this.side = side;
-    }
-
-    /***
-     * This method is used to get value of quantity of executed order.
-     * @return String value of executedQuantity
-     */
-    public int getExecutedQuantity() {
-        return executedQuantity;
-    }
-
-    /***
-     * This method is used to set value of executed quantity.
-     * @param executedQuantity
-     */
-    public void setExecutedQuantity(int executedQuantity) {
-        this.executedQuantity = executedQuantity;
     }
 
     /***
