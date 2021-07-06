@@ -10,6 +10,7 @@ public class RetrofitRestClient {
     public RetrofitRestClient() {
         retrofitForTrade = new Retrofit.Builder()
                 .baseUrl( "http://192.168.0.94:8091/")
+//        .baseUrl( "http://192.168.1.95:8091/")
                 .addConverterFactory( GsonConverterFactory.create())
                 .build();
 

@@ -72,6 +72,9 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         holder.symbol.setText(orderRequest.getSymbol());
         holder.side.setText(orderRequest.getSide());
         holder.status.setText( orderRequest.getStatus() );
+        if ("Order Completed".equalsIgnoreCase( orderRequest.getStatus())) {
+            holder.execButton.setEnabled( false );
+        }
         /***
          * This setOnClickListener is used to make function on execute Button
          */

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="270dp"
         android:text="Account Id"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:text="Quantity"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:text="Side"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:id="@+id/spinnerAccountID"
         android:layout_width="225dp"
         android:layout_height="29dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="270dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +102,7 @@
     <EditText
         android:id="@+id/quantityEditText"
         android:layout_width="223dp"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
@@ -111,13 +111,24 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerSymbol" />
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        android:text="CANCEL"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buySellRadioGroup" />
+
+    <Button
+        android:id="@+id/submitButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="156dp"
         android:text="Submit"
-        android:textSize="20sp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buySellRadioGroup" />
 
@@ -125,7 +136,7 @@
         android:id="@+id/createOrderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="190dp"
         android:text="Create Order"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,28 +144,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/portfolioHomeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="48dp"
-        android:text="Home"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/backButtonFromSubmitOrder"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="189dp"
+        android:layout_height="126dp"
+        app:srcCompat="@drawable/fixengine"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="29dp" />
 
-    <Button
-        android:id="@+id/backButtonFromSubmitOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="48dp"
-        android:text="Back"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="83dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_home_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
