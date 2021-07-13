@@ -22,11 +22,13 @@ public class OrderStatusActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     OrderStatusAdaptor orderStatusAdaptor;
+    String loginRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_order_status );
+        loginRole = getIntent().getExtras().get( "role" ).toString();
         recyclerView = findViewById(R.id.order_status_recycler_view);
         setOrderList();
     }
@@ -61,7 +63,7 @@ public class OrderStatusActivity extends AppCompatActivity {
     private void setOrderList() {
         OrderService orderService = new OrderService();
         List<SingleOrderRequest> orderList = new ArrayList<>();
-        orderStatusAdaptor = new OrderStatusAdaptor(OrderStatusActivity.this, orderList);
+        orderStatusAdaptor = new OrderStatusAdaptor(OrderStatusActivity.this, orderList, loginRole);
         orderService.setOrders(OrderStatusActivity.this, recyclerView, orderStatusAdaptor);
     }
 

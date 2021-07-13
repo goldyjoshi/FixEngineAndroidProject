@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.StackView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,16 +29,18 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
     private Context context; //Variable of type Context
     private List<SingleOrderRequest> orderList; //Variable to store the list of type single order request.
     private List<SingleOrderRequest> listOfAllOrders;
+    private String loginRole;
 
     /***
      * Constructor to initialized OrderStatusAdaptor data fields and its parent Adaptor and implements Filterable
      * @param context unique value of context
      * @param orderList unique representation of list of order
      */
-    public OrderStatusAdaptor(Context context, List<SingleOrderRequest> orderList) {
+    public OrderStatusAdaptor(Context context, List<SingleOrderRequest> orderList, String loginRole) {
         this.context=context;
         this.orderList = orderList;
         this.listOfAllOrders = new ArrayList<>(orderList);
+        this.loginRole = loginRole;
     }
 
     /***
@@ -55,8 +59,8 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
     }
 
     /***
-     *
-     * @param holder
+     *This method is Called by RecyclerView to display the data at the specified position.
+     * @param holder of type OrderStatusViewHolder
      * @param position unique value of type int
      */
     @Override
@@ -72,7 +76,7 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         holder.symbol.setText(orderRequest.getSymbol());
         holder.side.setText(orderRequest.getSide());
         holder.status.setText( orderRequest.getStatus() );
-        if ("Order Completed".equalsIgnoreCase( orderRequest.getStatus())) {
+        if ("Order Completed".equalsIgnoreCase( orderRequest.getStatus()) || "Trader".equalsIgnoreCase( loginRole )) {
             holder.execButton.setEnabled( false );
         }
         /***
@@ -95,7 +99,7 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
 
     /***
      * This method is used to get size of list of order.
-     * @return
+     * @return size of list of order
      */
     @Override
     public int getItemCount(){
@@ -141,6 +145,9 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
     };
 
 
+    /***
+     * This class is used to represent the each item in recyclerView on its place.
+     */
     public class OrderStatusViewHolder extends RecyclerView.ViewHolder {
         TextView orderId;
         TextView status;
@@ -164,10 +171,18 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         }
     }
 
+    /***
+     * This method is used to get list of all current order of type single order.
+     * @return list of order
+     */
     public List<SingleOrderRequest> getCurrrentOrderList() {
         return orderList;
     }
 
+    /***
+     * This method is used to get full order list
+     * @return list of all order of type single order list.
+     */
     public List<SingleOrderRequest> getFullOrderList() {
         return listOfAllOrders;
     }

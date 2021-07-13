@@ -1,5 +1,9 @@
 package com.example.fixengine.model;
 
+/***
+ * Class represent the ExecutionRequest and its field orderId, accountId, totalQuantity, symbol,
+ * side, quantityRequestedForExec, previousExecQuantity, executionPrice and execType.
+ */
 public class ExecutionRequest {
     private String orderId; //Variable to  store order Id
     private String accountId; //Variable to store account Id.
@@ -112,12 +116,16 @@ public class ExecutionRequest {
         return symbol;
     }
 
+    /***
+     * This function is used to set symbol value.
+     * @param symbol variable o store name of symbol
+     */
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
     /***
-     * this function is used to get side(type) of order means is it buy or sell.
+     * This function is used to get side(type) of order means is it buy or sell.
      * @return String value of side(buy/sell)
      */
     public String getSide() {

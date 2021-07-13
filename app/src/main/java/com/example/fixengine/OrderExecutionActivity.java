@@ -15,12 +15,15 @@ import com.example.fixengine.model.ExecutionRequest;
 import com.example.fixengine.model.SingleOrderRequest;
 import com.example.fixengine.services.ExecutionService;
 
+/***
+ * This class is represent an order execution functionality.
+ */
 public class OrderExecutionActivity extends AppCompatActivity {
 
-    private SingleOrderRequest singleOrderRequest;
-    private ExecutionService executionService;
-    EditText execQuantityEditText;
-    EditText execPriceEditText;
+    private SingleOrderRequest singleOrderRequest; //Variable to store the single order request
+    private ExecutionService executionService; // Variable to store the object of ExecutionService
+    EditText execQuantityEditText;// Variable to store the edited quantity of executed order
+    EditText execPriceEditText; //Variable to store the edited price of executed order
     Button acceptButton;
     Button executeOrderButton;
 

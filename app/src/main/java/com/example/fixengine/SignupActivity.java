@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.fixengine.model.TradeDetails;
@@ -33,10 +34,19 @@ public class SignupActivity extends AppCompatActivity {
                 String traderId = ((EditText) findViewById( R.id.textTraderId )).getText().toString();
                 String traderEmailId = ((EditText) findViewById( R.id.textEmailId )).getText().toString();
                 String traderPassword = ((EditText) findViewById( R.id.textPassword )).getText().toString();
+                RadioButton brokerRadiobutton = findViewById(R.id.brokerRadioButton);
+                String loginRole = "Trader";
+                if (brokerRadiobutton.isChecked()) {
+                    loginRole = "Broker";
+                }
 
 
-                TradeDetails tradeDetails = new TradeDetails(traderId, traderEmailId, traderPassword);
-                restSignupLoginService.signup(tradeDetails);
+                TradeDetails tradeDetails = new TradeDetails(traderId, traderEmailId, traderPassword, loginRole);
+                if (traderId.isEmpty() || traderEmailId.isEmpty() || traderPassword.isEmpty() || loginRole.isEmpty() ) {
+                    Toast.makeText( SignupActivity.this, "Please complete all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    restSignupLoginService.signup( tradeDetails );
+                }
                 Toast.makeText( SignupActivity.this, "you have successfully signup", Toast.LENGTH_SHORT ).show();
 
                 Intent intentLoginScreen = new Intent(SignupActivity.this, MainActivityPage.class);

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
@@ -25,6 +26,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     private OrderService orderService;
     private ClientAccountService clientAccountService;
     private SymbolService symbolService;
+    private ImageButton imageHomeButton;
 
 
     @Override
@@ -38,8 +40,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
         addSymbolsOnSpinner();
         addSubmitButtonActionListner();
         cancelOrder();
-//
-//        backToMainpage();
+        addHomeButtonClickListner();
     }
 
     private void addSymbolsOnSpinner() {
@@ -60,7 +61,6 @@ public class SubmitOrderActivity extends AppCompatActivity {
 //        account.add( "B321" );
             accountSpinner.setAdapter( new ArrayAdapter<>( SubmitOrderActivity.this,
                     android.R.layout.simple_spinner_dropdown_item, account ) );
-
     }
 
     public void addSubmitButtonActionListner() {
@@ -98,6 +98,17 @@ public class SubmitOrderActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent cancelIntent = new Intent(SubmitOrderActivity.this, TradeOptionStatusPortofolioActivity.class);
                 startActivity( cancelIntent );
+            }
+        } );
+    }
+
+    public void addHomeButtonClickListner() {
+        imageHomeButton = findViewById(R.id.homeImageButton);
+        imageHomeButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(SubmitOrderActivity.this, TradeOptionStatusPortofolioActivity.class);
+                startActivity( homeIntent );
             }
         } );
     }

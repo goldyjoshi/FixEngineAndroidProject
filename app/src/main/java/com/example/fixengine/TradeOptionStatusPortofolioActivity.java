@@ -8,16 +8,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.fixengine.model.DataUtility;
+
 /***
  * This class is used to open new activity on click listener on different options like see status,
  * portfolio,order status.
  */
 public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
 
+    Button submitOrder;
+    String loginRole;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_trade_option_status_portofolio );
+        submitOrder = findViewById( R.id.placeOrderButton );
+        loginRole = getIntent().getExtras().get( "role" ).toString();
+        if ("Broker".equalsIgnoreCase( loginRole )) {
+            submitOrder.setEnabled( false );
+        }
         submitOrder();
         backToMainpage();
         openOrderStatusActivity();
@@ -30,6 +40,7 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent orderStatusIntent = new Intent( TradeOptionStatusPortofolioActivity.this, OrderStatusActivity.class );
+                orderStatusIntent.putExtra( "role", loginRole );
                 startActivity( orderStatusIntent );
                 System.out.println("In order status activity");
             }
@@ -48,7 +59,6 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
     }
 
     public void submitOrder() {
-        Button submitOrder = findViewById( R.id.placeOrderButton );
         submitOrder.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {

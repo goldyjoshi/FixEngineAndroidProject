@@ -1,7 +1,12 @@
 package com.example.fixengine.services;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import com.example.fixengine.MainActivityPage;
+import com.example.fixengine.TradeOptionStatusPortofolioActivity;
+import com.example.fixengine.model.DataUtility;
 import com.example.fixengine.model.TradeDetails;
 import com.example.fixengine.model.TraderLoginDetails;
 
@@ -46,18 +51,27 @@ public class RestSignupLoginService {
 
     /***..........***/
 
-//    public void login(TraderLoginDetails traderLoginDetails) {
-//        Call<TraderLoginDetails> traderLoginDetailsCall = iSignupLoginServiceAPI.login( traderLoginDetails );
-//        traderLoginDetailsCall.enqueue( (new Callback<TraderLoginDetails>() {
-//            @Override
-//            public void onResponse(Call<TraderLoginDetails> call, Response<TraderLoginDetails> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<TraderLoginDetails> call, Throwable t) {
-//
-//            }
-//        }) );
-//    }
+    public void login(final String  authHeaderValue, final Context context) {
+        Call<TraderLoginDetails> traderLoginDetailsCall = iSignupLoginServiceAPI.login( authHeaderValue );
+        traderLoginDetailsCall.enqueue( (new Callback<TraderLoginDetails>() {
+            @Override
+            public void onResponse(Call<TraderLoginDetails> call, Response<TraderLoginDetails> response) {
+                if (!response.isSuccessful()) {
+                    System.out.println("Unsuccessful login with message :" + response.message() +
+                            " Code : " + response.code());
+                    return;
+                }
+                String  msg = "Request Body containing: " + response.body();
+                Intent loginIntent = new Intent( context, TradeOptionStatusPortofolioActivity.class);
+                loginIntent.putExtra( "role",  response.body().getLoginRole());
+                context.startActivity( loginIntent );
+                Log.println( Log.INFO, "login", msg );
+            }
+
+            @Override
+            public void onFailure(Call<TraderLoginDetails> call, Throwable t) {
+                System.out.println("Failed to login with exception :" + t.getMessage());
+            }
+        }) );
+    }
 }

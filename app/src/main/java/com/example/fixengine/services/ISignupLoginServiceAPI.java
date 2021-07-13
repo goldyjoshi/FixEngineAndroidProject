@@ -7,6 +7,7 @@ import com.example.fixengine.model.TraderLoginDetails;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ISignupLoginServiceAPI {
@@ -14,5 +15,5 @@ public interface ISignupLoginServiceAPI {
     Call<TradeDetails> signup(@Body TradeDetails tradeDetails);
 
     @GET("login")
-    Call<TraderLoginDetails> login(@Body TraderLoginDetails traderLoginDetails);
+    Call<TraderLoginDetails> login(@Header( "Authorization") String authHeader );
 }
