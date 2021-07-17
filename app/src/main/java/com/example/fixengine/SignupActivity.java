@@ -31,27 +31,26 @@ public class SignupActivity extends AppCompatActivity {
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String traderId = ((EditText) findViewById( R.id.textTraderId )).getText().toString();
-                String traderEmailId = ((EditText) findViewById( R.id.textEmailId )).getText().toString();
-                String traderPassword = ((EditText) findViewById( R.id.textPassword )).getText().toString();
+                String traderId = ((EditText) findViewById( R.id.textTraderId )).getText().toString().trim();
+                String traderEmailId = ((EditText) findViewById( R.id.textEmailId )).getText().toString().trim();
+                String traderPassword = ((EditText) findViewById( R.id.textPassword )).getText().toString().trim();
                 RadioButton brokerRadiobutton = findViewById(R.id.brokerRadioButton);
-                String loginRole = "Trader";
+                RadioButton traderRadiobutton = findViewById(R.id.traderRadioButton);
+                String loginRole = "";
                 if (brokerRadiobutton.isChecked()) {
                     loginRole = "Broker";
+                } else if (traderRadiobutton.isChecked()) {
+                    loginRole = "Trader";
                 }
-
-
-                TradeDetails tradeDetails = new TradeDetails(traderId, traderEmailId, traderPassword, loginRole);
-                if (traderId.isEmpty() || traderEmailId.isEmpty() || traderPassword.isEmpty() || loginRole.isEmpty() ) {
-                    Toast.makeText( SignupActivity.this, "Please complete all fields", Toast.LENGTH_SHORT).show();
+                TradeDetails tradeDetails = new TradeDetails(traderId, traderEmailId,
+                        traderPassword, loginRole);
+                if (traderId.isEmpty() || traderEmailId.isEmpty() || traderPassword.isEmpty() ||
+                        loginRole.isEmpty() || loginRole.isEmpty()) {
+                    Toast.makeText( SignupActivity.this, "Please complete all fields " +
+                            "for signup.", Toast.LENGTH_SHORT).show();
                 } else {
-                    restSignupLoginService.signup( tradeDetails );
+                    restSignupLoginService.signup( tradeDetails, SignupActivity.this );
                 }
-                Toast.makeText( SignupActivity.this, "you have successfully signup", Toast.LENGTH_SHORT ).show();
-
-                Intent intentLoginScreen = new Intent(SignupActivity.this, MainActivityPage.class);
-                startActivity(intentLoginScreen);
-
             }
         } );
     }

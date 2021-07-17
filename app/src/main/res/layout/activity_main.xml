@@ -9,14 +9,18 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="198dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#FFFFFF"
+        android:id="@+id/imageButtonForMainPage"
+        android:layout_width="319dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/fixengine" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

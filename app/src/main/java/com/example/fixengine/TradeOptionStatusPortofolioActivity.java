@@ -27,9 +27,9 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
         loginRole = getIntent().getExtras().get( "role" ).toString();
         if ("Broker".equalsIgnoreCase( loginRole )) {
             submitOrder.setEnabled( false );
+//            submitOrder.setBackgroundColor( #14ABA539 );
         }
         submitOrder();
-        backToMainpage();
         openOrderStatusActivity();
         logoutActivity();
     }
@@ -47,16 +47,7 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
         } );
     }
 
-    public void backToMainpage() {
-        Button backButoon = findViewById( R.id.backFromOptionScreenButton );
-        backButoon.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backintent = new Intent(TradeOptionStatusPortofolioActivity.this, MainActivityPage.class);
-                startActivity( backintent );
-            }
-        } );
-    }
+
 
     public void submitOrder() {
         submitOrder.setOnClickListener( new View.OnClickListener() {

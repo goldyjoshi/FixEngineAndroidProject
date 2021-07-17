@@ -3,8 +3,10 @@ package com.example.fixengine.services;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.fixengine.MainActivityPage;
+import com.example.fixengine.SignupActivity;
 import com.example.fixengine.TradeOptionStatusPortofolioActivity;
 import com.example.fixengine.model.DataUtility;
 import com.example.fixengine.model.TradeDetails;
@@ -26,7 +28,7 @@ public class RestSignupLoginService {
         iSignupLoginServiceAPI = retrofit.create(ISignupLoginServiceAPI.class);
     }
 
-    public void signup(TradeDetails tradeDetails) {
+    public void signup(TradeDetails tradeDetails, Context context) {
         Call<TradeDetails> tradeDetailsCall = iSignupLoginServiceAPI.signup(tradeDetails);
 
         tradeDetailsCall.enqueue( new Callback<TradeDetails>() {
@@ -38,11 +40,15 @@ public class RestSignupLoginService {
                     return;
                 }
                 String  msg = "Request Body containing: " + response.body();
+                Toast.makeText( context, "You have successfully signup.", Toast.LENGTH_SHORT ).show();
+                Intent intentLoginScreen = new Intent(context, MainActivityPage.class);
+                context.startActivity(intentLoginScreen);
                 Log.println( Log.INFO, "signup", msg );
             }
 
             @Override
             public void onFailure(Call<TradeDetails> call, Throwable t) {
+                Toast.makeText( context, "Signup request has been failed. Please try again.", Toast.LENGTH_SHORT ).show();
                 System.out.println("Failed to Register with exception :" + t.getMessage());
             }
         } );
@@ -62,9 +68,15 @@ public class RestSignupLoginService {
                     return;
                 }
                 String  msg = "Request Body containing: " + response.body();
-                Intent loginIntent = new Intent( context, TradeOptionStatusPortofolioActivity.class);
-                loginIntent.putExtra( "role",  response.body().getLoginRole());
-                context.startActivity( loginIntent );
+                if ("failed".equalsIgnoreCase(  response.body().getLoginStatus())) {
+                    Toast.makeText( context,
+                            "Login failed. One of the credential is not correct.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Intent loginIntent = new Intent( context, TradeOptionStatusPortofolioActivity.class );
+                    loginIntent.putExtra( "role", response.body().getLoginRole() );
+                    context.startActivity( loginIntent );
+                }
                 Log.println( Log.INFO, "login", msg );
             }
 

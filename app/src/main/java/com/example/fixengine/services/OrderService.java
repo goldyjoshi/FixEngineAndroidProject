@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixengine.R;
+import com.example.fixengine.SubmitOrderActivity;
 import com.example.fixengine.model.OrderStatusAdaptor;
 import com.example.fixengine.model.SingleOrderRequest;
 
@@ -63,7 +64,7 @@ public class OrderService {
 
     }
 
-    public void submitOrder(SingleOrderRequest singleOrderRequest) {
+    public void submitOrder(SingleOrderRequest singleOrderRequest, Context context) {
         Call<SingleOrderRequest> singleOrderRequestCall = iOrderSubmissionServiceAPI.submitOrder
                 (singleOrderRequest);
         singleOrderRequestCall.enqueue( new Callback<SingleOrderRequest>() {
@@ -73,16 +74,18 @@ public class OrderService {
                 if (!response.isSuccessful()) {
                     System.out.println("Failed to submit order :" +response.message() + "Code :"
                             + response.code());
-                return;
+                    Toast.makeText( context, "Order Submission has been failed.", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                String message = "Request Body conatining: " +response.body();
-                Log.println( Log.INFO, "submitorder", message);
+                String message = "Request Body containing: " +response.body();
+                Log.println( Log.INFO, "submit order", message);
+                Toast.makeText( context, "Order has been submitted successfully.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<SingleOrderRequest> call, Throwable t) {
                 System.out.println("Failed to register with exception : " + t.getMessage());
-
+                Toast.makeText( context, "Request to submit order has been failed.", Toast.LENGTH_SHORT).show();
             }
         } );
     }

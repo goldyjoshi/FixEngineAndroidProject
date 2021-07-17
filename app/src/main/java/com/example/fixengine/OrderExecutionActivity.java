@@ -24,8 +24,8 @@ public class OrderExecutionActivity extends AppCompatActivity {
     private ExecutionService executionService; // Variable to store the object of ExecutionService
     EditText execQuantityEditText;// Variable to store the edited quantity of executed order
     EditText execPriceEditText; //Variable to store the edited price of executed order
-    Button acceptButton;
-    Button executeOrderButton;
+    Button acceptButton; //Variable of type Button to click on and can accept an order
+    Button executeOrderButton; //Variable of type Button to click on and can execute an order
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,10 @@ public class OrderExecutionActivity extends AppCompatActivity {
         setActionOnExecuteOrder();
     }
 
+    /***
+     * This method is used to set value of SingleOrderRequest variables which filled by user on UI
+     * @param singleOrderRequest variable to store data of type SingleOrderRequest
+     */
     private void setOrderDataOnActivity(SingleOrderRequest singleOrderRequest) {
         this.singleOrderRequest = singleOrderRequest;
         TextView orderId = findViewById( R.id.execOrderIdTextView );

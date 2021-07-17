@@ -8,6 +8,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.fixengine.services.RestSignupLoginService;
@@ -15,6 +16,7 @@ import com.example.fixengine.services.RestSignupLoginService;
 
 public class MainActivityPage extends AppCompatActivity {
     private RestSignupLoginService restSignupLoginService;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,11 @@ public class MainActivityPage extends AppCompatActivity {
         loginButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailIdValue = emailEditText.getText().toString();
-                String passwordValue = passwordEditTest.getText().toString();
+                String emailIdValue = emailEditText.getText().toString().trim();
+                String passwordValue = passwordEditTest.getText().toString().trim();
                 if(emailIdValue.isEmpty() || passwordValue.isEmpty()) {
                     Toast.makeText( MainActivityPage.this,
-                            "please provide correct credentials.", Toast.LENGTH_LONG).show();
+                            "One of required credential is empty.", Toast.LENGTH_LONG).show();
                 } else {
                     String userInput = emailIdValue + ":" + passwordValue;
                     String authHeaderString = "Basic " + Base64.encodeToString( userInput.getBytes(), Base64.NO_WRAP );
@@ -58,5 +60,7 @@ public class MainActivityPage extends AppCompatActivity {
             }
         } );
     }
+
+
 
 }

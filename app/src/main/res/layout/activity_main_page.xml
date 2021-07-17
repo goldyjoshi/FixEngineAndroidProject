@@ -33,7 +33,7 @@
         android:textColor="#1E88E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFixEngine" />
 
     <EditText
         android:id="@+id/passwordEdittext"
@@ -55,6 +55,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="82dp"
         android:text="Login"
+        android:backgroundTint="#3949AB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdittext" />
 
@@ -65,11 +66,12 @@
         android:layout_marginTop="82dp"
         android:layout_marginEnd="80dp"
         android:text="Signup"
+        android:backgroundTint="#3949AB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdittext" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewFixEngine"
         android:layout_width="191dp"
         android:layout_height="127dp"
         android:layout_marginTop="16dp"
