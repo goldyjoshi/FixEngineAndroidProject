@@ -11,8 +11,9 @@
         android:layout_width="158dp"
         android:layout_height="53dp"
         android:layout_marginTop="228dp"
-        android:backgroundTint="#11AB8F39"
+        android:backgroundTint="#3949AB"
         android:text="Place a Trade"
+        android:textColorHint="#E9232020"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +25,8 @@
 <!--        android:layout_height="42dp"-->
 <!--        android:layout_marginEnd="24dp"-->
 <!--        android:layout_marginBottom="120dp"-->
-<!--        android:backgroundTint="#FFB300"-->
-<!--        android:backgroundTintMode="add"-->
+<!--        android:backgroundTint="0.05"-->
+<!--        android:backgroundTintMode=-->
 <!--        android:text="Back"-->
 <!--        android:textColor="#5E35B1"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->

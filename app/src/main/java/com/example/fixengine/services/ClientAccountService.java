@@ -16,6 +16,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/***
+ * This class is represent the client account service details and its function like getClientAccountList
+ */
 public class ClientAccountService {
 
     private RetrofitRestClient retrofitRestClient; //Variable to create object of RetrofitRestClient

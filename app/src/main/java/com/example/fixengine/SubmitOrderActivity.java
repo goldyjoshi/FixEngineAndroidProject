@@ -29,9 +29,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     private SymbolService symbolService;
     private ImageButton imageHomeButton;
     EditText quantityEdittext;
-    String quantity;
-    String account;
-    String symbol;
+    String loginRole;
     Spinner accountSpinner;
     Spinner symbolSpinner;
 
@@ -46,6 +44,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
         quantityEdittext = findViewById( R.id.quantityEditText );
         Spinner accountSpinner = findViewById(R.id.spinnerAccountID);
         Spinner symbolSpinner = findViewById( R.id.spinnerSymbol );
+        loginRole = getIntent().getExtras().get( "role" ).toString();
         addAccountsOnSpinner();
         addSymbolsOnSpinner();
         addSubmitButtonActionListner();
@@ -70,7 +69,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     }
 
     public void addSubmitButtonActionListner() {
-        Button submitButton = findViewById(R.id.cancelButton );
+        Button submitButton = findViewById(R.id.submitButton2 );
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,7 +100,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                     Toast.makeText( SubmitOrderActivity.this, "Please complete all fields " +
                             "for order submission.", Toast.LENGTH_SHORT).show();
                 } else {
-                    orderService.submitOrder( singleOrderRequest, SubmitOrderActivity.this );
+                    orderService.submitOrder( singleOrderRequest, SubmitOrderActivity.this, loginRole );
                 }
             }
         } );

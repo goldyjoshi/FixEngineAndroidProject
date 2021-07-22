@@ -11,8 +11,8 @@ import retrofit2.http.POST;
 
 public interface IOrderSubmissionServiceAPI {
 
-    @POST("submitorder")
-    Call<SingleOrderRequest> submitOrder(@Body SingleOrderRequest singleOrderRequest);
+    @POST("submit_order")
+    Call<Boolean> submitOrder(@Body SingleOrderRequest singleOrderRequest);
 
     @GET("orders")
     Call<List<SingleOrderRequest>> getOrders();

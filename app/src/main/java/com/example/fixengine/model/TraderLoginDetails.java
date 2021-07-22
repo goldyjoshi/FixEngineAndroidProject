@@ -56,7 +56,7 @@ public class TraderLoginDetails {
     }
 
     /***
-     * Methiod is used to get unique value of password
+     * Method is used to get unique value of password
      * @return String value of password
      */
     public String getLoginRole() {
@@ -64,7 +64,7 @@ public class TraderLoginDetails {
     }
 
     /***
-     * Methios is used to set unique vlaue of password
+     * Method is used to set unique vlaue of password
      * @param loginRole unique value of trader's password
      */
     public void setLoginRole(String loginRole) {

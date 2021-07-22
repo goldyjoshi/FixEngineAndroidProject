@@ -1,7 +1,13 @@
 package com.example.fixengine.services;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.fixengine.OrderExecutionActivity;
+import com.example.fixengine.OrderStatusActivity;
+import com.example.fixengine.TradeOptionStatusPortofolioActivity;
 import com.example.fixengine.model.ExecutionRequest;
 
 import retrofit2.Call;
@@ -33,26 +39,29 @@ public class ExecutionService {
      * when execution failed.
      * @param executionRequest variable to store execution request.
      */
-    public void sendExecution(ExecutionRequest executionRequest) {
-        Call<ExecutionRequest> executionRequestCall = iExecutionServiceAPI.sendExecution(executionRequest);
-        executionRequestCall.enqueue( new Callback<ExecutionRequest>() {
+    public void sendExecution(ExecutionRequest executionRequest, Context context, String messageToDisplay) {
+        Call<Boolean> executionRequestCall = iExecutionServiceAPI.sendExecution(executionRequest);
+        executionRequestCall.enqueue( new Callback<Boolean>() {
 
             @Override
-            public void onResponse(Call<ExecutionRequest> call, Response<ExecutionRequest> response) {
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 if (!response.isSuccessful()) {
                     System.out.println("Failed while sending execution :" +response.message() + "Code :"
                             + response.code());
                     return;
                 }
-                String message = "Request Body conatining: " + response.body();
+                String message = "Request Body containing: " + response.body();
                 Log.println( Log.INFO, "execution", message);
+                Toast.makeText( context, messageToDisplay, Toast.LENGTH_SHORT ).show();
+                Intent orderStatusIntent = new Intent( context, OrderStatusActivity.class );
+                orderStatusIntent.putExtra( "role", "Broker" );
+                context.startActivity( orderStatusIntent );
             }
-
-
             @Override
-            public void onFailure(Call<ExecutionRequest> call, Throwable t) {
+            public void onFailure(Call<Boolean> call, Throwable t) {
                 String failureMessage = "Failed to send exception : " + t.getMessage();
                 Log.println( Log.INFO, "execution",  failureMessage);
+                Toast.makeText( context, "Order execution has been failed.", Toast.LENGTH_SHORT ).show();
             }
         } );
     }

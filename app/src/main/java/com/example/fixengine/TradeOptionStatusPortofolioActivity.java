@@ -3,6 +3,8 @@ package com.example.fixengine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,8 +28,8 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
         submitOrder = findViewById( R.id.placeOrderButton );
         loginRole = getIntent().getExtras().get( "role" ).toString();
         if ("Broker".equalsIgnoreCase( loginRole )) {
+            submitOrder.setBackgroundColor(Color.GRAY);
             submitOrder.setEnabled( false );
-//            submitOrder.setBackgroundColor( #14ABA539 );
         }
         submitOrder();
         openOrderStatusActivity();
@@ -54,6 +56,7 @@ public class TradeOptionStatusPortofolioActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent submitOrder = new Intent(TradeOptionStatusPortofolioActivity.this, SubmitOrderActivity.class);
+                submitOrder.putExtra( "role", loginRole );
                 startActivity( submitOrder );
             }
         } );

@@ -9,13 +9,13 @@ import android.os.Parcelable;
  * @author vijayshreejoshi
  */
 public class SingleOrderRequest implements Parcelable {
-    private String orderId; //Variable to store unique value of order id
-    private String accountId; // Variable to store unique value of account id
-    private double quantity; //Variable to store quantity of order
-    private String symbol; //Variable to store name of symbol
-    private String side; //Variable to represent the value of side
-    private double executedQuantity; //Variable to represent the quantity of executed order
-    private String status; // variable to represent the status of order
+    private String orderId; //Variable to store the unique value of order Id.
+    private String accountId; //Variable to store the unique value of account Id.
+    private double quantity; //Variable to store the unique value of quantity of requested order.
+    private double executedQuantity; //Variable to store the unique value of executed quantity of requested order.
+    private String status; //Variable to represent the unique value of status of order.
+    private String symbol; //Variable to represent the unique value of symbol.
+    private String side; //Variable to represent the unique value of side(buy/sell).
 
     /***
      * Empty construct for a class to create new instances

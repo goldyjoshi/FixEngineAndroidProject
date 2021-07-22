@@ -1,14 +1,17 @@
 package com.example.fixengine.services;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fixengine.OrderStatusActivity;
 import com.example.fixengine.R;
 import com.example.fixengine.SubmitOrderActivity;
+import com.example.fixengine.TradeOptionStatusPortofolioActivity;
 import com.example.fixengine.model.OrderStatusAdaptor;
 import com.example.fixengine.model.SingleOrderRequest;
 
@@ -20,6 +23,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/***
+ * This class will represent
+ */
 public class OrderService {
 
     private RetrofitRestClient retrofitRestClient;
@@ -64,26 +70,30 @@ public class OrderService {
 
     }
 
-    public void submitOrder(SingleOrderRequest singleOrderRequest, Context context) {
-        Call<SingleOrderRequest> singleOrderRequestCall = iOrderSubmissionServiceAPI.submitOrder
+    public void submitOrder(SingleOrderRequest singleOrderRequest, Context context, String loginRole) {
+        Call<Boolean> singleOrderRequestCall = iOrderSubmissionServiceAPI.submitOrder
                 (singleOrderRequest);
-        singleOrderRequestCall.enqueue( new Callback<SingleOrderRequest>() {
+        singleOrderRequestCall.enqueue( new Callback<Boolean>() {
             @Override
-            public void onResponse(Call<SingleOrderRequest> call, Response<SingleOrderRequest>
+            public void onResponse(Call<Boolean> call, Response<Boolean>
                     response) {
                 if (!response.isSuccessful()) {
-                    System.out.println("Failed to submit order :" +response.message() + "Code :"
+                    System.out.println("Failed to submit order :" + singleOrderRequest.toString() + "Code :"
                             + response.code());
                     Toast.makeText( context, "Order Submission has been failed.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String message = "Request Body containing: " +response.body();
+                String message = "Request Body containing: " + singleOrderRequest.toString();
                 Log.println( Log.INFO, "submit order", message);
-                Toast.makeText( context, "Order has been submitted successfully.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Order has been submitted successfully.", Toast.LENGTH_SHORT).show();
+                Intent newOrderStatusActivity = new Intent( context, OrderStatusActivity.class );
+                newOrderStatusActivity.putExtra( "role", loginRole );
+                context.startActivity(newOrderStatusActivity);
+
             }
 
             @Override
-            public void onFailure(Call<SingleOrderRequest> call, Throwable t) {
+            public void onFailure(Call<Boolean> call, Throwable t) {
                 System.out.println("Failed to register with exception : " + t.getMessage());
                 Toast.makeText( context, "Request to submit order has been failed.", Toast.LENGTH_SHORT).show();
             }

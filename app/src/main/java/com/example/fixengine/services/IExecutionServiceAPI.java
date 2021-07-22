@@ -18,5 +18,5 @@ public interface IExecutionServiceAPI {
      * @return
      */
     @POST("execution")
-    Call<ExecutionRequest> sendExecution(@Body ExecutionRequest executionRequest);
+    Call<Boolean> sendExecution(@Body ExecutionRequest executionRequest);
 }

@@ -2,6 +2,7 @@ package com.example.fixengine.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -77,6 +78,7 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         holder.side.setText(orderRequest.getSide());
         holder.status.setText( orderRequest.getStatus() );
         if ("Order Completed".equalsIgnoreCase( orderRequest.getStatus()) || "Trader".equalsIgnoreCase( loginRole )) {
+            holder.execButton.setBackgroundColor( Color.GRAY );
             holder.execButton.setEnabled( false );
         }
         /***
