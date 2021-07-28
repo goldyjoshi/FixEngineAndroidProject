@@ -13,8 +13,8 @@ import retrofit2.http.POST;
 public interface IExecutionServiceAPI {
 
     /***
-     *
-     * @param executionRequest
+     * This is post method to send execution to java middleware app rest.
+     * @param executionRequest of type ExecutionRequest.
      * @return
      */
     @POST("execution")

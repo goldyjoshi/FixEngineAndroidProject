@@ -5,6 +5,12 @@
         android:icon="@drawable/ic_order_search"
         android:title="AccountSearch"
         android:hint="AccountId"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView"/>
+
+    <item android:id="@+id/homeMenuItem"
+        android:icon="@drawable/ic_baseline_home_order_search_24"
+        android:title="HomeItem"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="android.widget.Button"/>
 </menu>

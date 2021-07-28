@@ -6,9 +6,9 @@ package com.example.fixengine.model;
  */
 public class TraderLoginDetails {
 
-    private String loginStatus;
-    private String loginRole;
-    private String employeeId;
+    private String loginStatus; //Variable to store unique value of login status of user.
+    private String loginRole; //Variable to store unique value of login role of user (Trader/Broker).
+    private String employeeId; //Variable to store unique value of employee Id.
 
     /***
      * Constructor to initialize the fields of TraderLoginDetails class.
@@ -64,7 +64,7 @@ public class TraderLoginDetails {
     }
 
     /***
-     * Method is used to set unique vlaue of password
+     * Method is used to set unique value of password
      * @param loginRole unique value of trader's password
      */
     public void setLoginRole(String loginRole) {

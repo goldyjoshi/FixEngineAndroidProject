@@ -47,11 +47,15 @@ public class OrderExecutionActivity extends AppCompatActivity {
             acceptButton.setEnabled( true );
             executeOrderButton.setBackgroundColor( Color.GRAY);
             executeOrderButton.setEnabled( false );
+            execQuantityEditText.setVisibility(View.INVISIBLE  );
+            execPriceEditText.setVisibility( View.INVISIBLE );
         } else {
             acceptButton.setBackgroundColor(Color.GRAY);
             acceptButton.setEnabled( false );
             executeOrderButton.setBackgroundColor(Color.parseColor("#3949AB"));
             executeOrderButton.setEnabled( true );
+            execQuantityEditText.setVisibility(View.VISIBLE  );
+            execPriceEditText.setVisibility( View.VISIBLE );
         }
         setActionOnAcceptOrder();
         setActionOnExecuteOrder();

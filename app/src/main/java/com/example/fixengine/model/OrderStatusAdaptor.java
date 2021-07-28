@@ -24,13 +24,17 @@ import com.example.fixengine.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * This class is to represent the adopter for recycler view of order status and its fields.
+ * @author vijayshreejoshi
+ */
 public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.OrderStatusViewHolder>
         implements Filterable {
 
     private Context context; //Variable of type Context
     private List<SingleOrderRequest> orderList; //Variable to store the list of type single order request.
-    private List<SingleOrderRequest> listOfAllOrders;
-    private String loginRole;
+    private List<SingleOrderRequest> listOfAllOrders; // Variable to store the single order request
+    private String loginRole; // variable to store the login role either is Trader ot broker
 
     /***
      * Constructor to initialized OrderStatusAdaptor data fields and its parent Adaptor and implements Filterable
@@ -46,8 +50,8 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
 
     /***
      * This method is override from implements  Filterable class and its inflate the layout
-     * @param parent
-     * @param viewType
+     * @param parent to store the object of class ViewGroup
+     * @param viewType to store viewType of integer
      * @return viewHolder of type OrderStatusViewHolder
      */
     @NonNull
@@ -117,6 +121,11 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         return orderFilter;
     }
 
+    /***
+     * This method is to create a instance of Filter class on condtion if parameter of charSequence
+     * of method performFiltering, is null then it will add in list otherwise loop through the single
+     * order request and if parameter containdin signle order then it should be ad din list.
+     */
     private Filter orderFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {

@@ -3,6 +3,7 @@ package com.example.fixengine.model;
 /***
  * This class is represent the fields of trade details as traderEmployeeId, traderEmailId,
  * traderPassword, loginRole.
+ * @author vijayshreejoshi
  */
 public class TradeDetails {
     private String traderEmployeeId; // variable to store trder employee id of type String.

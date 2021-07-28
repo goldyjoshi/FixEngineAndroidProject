@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.example.fixengine.model.OrderStatusAdaptor;
@@ -38,6 +43,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate( R.menu.order_menu, menu );
         MenuItem orderSearchItem = menu.findItem( R.id.orderSearch );
+        MenuItem homeMenuItem = menu.findItem( R.id.homeMenuItem );
         SearchView orderSearchView = (SearchView) orderSearchItem.getActionView();
 
         orderSearchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
@@ -57,6 +63,17 @@ public class OrderStatusActivity extends AppCompatActivity {
                 return false;
             }
         } );
+        Button homeItemImageButton = (Button) homeMenuItem.getActionView();
+        homeItemImageButton.setText( "Home" );
+        homeItemImageButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(OrderStatusActivity.this, TradeOptionStatusPortofolioActivity.class);
+                homeIntent.putExtra( "role", loginRole );
+                startActivity( homeIntent );
+            }
+        } );
+
         return true;
     }
 
