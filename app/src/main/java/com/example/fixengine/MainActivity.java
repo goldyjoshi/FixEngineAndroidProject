@@ -6,38 +6,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.fixengine.services.RestTradeService;
-
-import java.util.List;
-
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import java.util.List;
-import retrofit2.Call;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textview;
     private ImageButton imageButton;
+    ImageView imageView;
 
     //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
-        imageButton = findViewById( R.id.imageButton );
-        imageButton.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent openMainPageIntent = new Intent( MainActivity.this, com.example.fixengine.MainActivityPage.class );
-                startActivity( openMainPageIntent );
-            }
-        } );
+//        imageButton = findViewById( R.id.imageButtonForMainPage );
+//        imageButton.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent openMainPageIntent = new Intent( MainActivity.this, com.example.fixengine.MainActivityPage.class );
+//                startActivity( openMainPageIntent );
+//            }
+//        } );
+        fixEngineLogo();
 ////        textview = findViewById(R.id.tradeTextView );
 //        RestTradeService restTradeService = new RestTradeService();
 //        String status = restTradeService.submitTrade();
@@ -47,5 +37,17 @@ public class MainActivity extends AppCompatActivity {
 //       Intent signupIntent = new Intent(this,SignupActivity.class);
 //       startActivity(signupIntent);
 //    }
+    }
+
+    public void fixEngineLogo() {
+        imageButton = findViewById( R.id.imageButtonForMainPage);
+        imageButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainPageIntent = new Intent(MainActivity.this,com.example.fixengine.MainActivityPage.class);
+                startActivity( mainPageIntent );
+            }
+        } );
+
     }
 }

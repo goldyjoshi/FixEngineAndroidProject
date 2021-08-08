@@ -1,12 +1,15 @@
 package com.example.fixengine.model;
 
 /***
- * This class is represent the fields of trade details
+ * This class is represent the fields of trade details as traderEmployeeId, traderEmailId,
+ * traderPassword, loginRole.
+ * @author vijayshreejoshi
  */
 public class TradeDetails {
     private String traderEmployeeId; // variable to store trder employee id of type String.
     private String traderEmailId;   // variable to store trder email id of type String.
     private String traderPassword;  // variable to store trder password id of type String.
+    private String loginRole;       // variable to store role during signup.
 
     /***
      * Constructor is to initialize the data field of TradeDetails class.
@@ -14,10 +17,12 @@ public class TradeDetails {
      * @param traderEmailId to represent a unique value of email id of trader
      * @param traderPassword to represent a unique value of password.
      */
-    public TradeDetails(final String traderEmployeeId, final String traderEmailId, final String traderPassword) {
+    public TradeDetails(final String traderEmployeeId, final String traderEmailId,
+                        final String traderPassword, final String loginRole) {
         this.traderEmployeeId = traderEmployeeId;
         this.traderEmailId = traderEmailId;
         this.traderPassword = traderPassword;
+        this.loginRole = loginRole;
     }
 
     /***
@@ -66,5 +71,21 @@ public class TradeDetails {
      */
     public void setTraderPassword(String traderPassword) {
         this.traderPassword = traderPassword;
+    }
+
+    /***
+     * This method is used to get value of login role.
+     * @return String value of loginRole
+     */
+    public String getLoginRole() {
+        return loginRole;
+    }
+
+    /***
+     * This setter method is used to set value of loginRole.
+     * @param loginRole value
+     */
+    public void setLoginRole(String loginRole) {
+        this.loginRole = loginRole;
     }
 }

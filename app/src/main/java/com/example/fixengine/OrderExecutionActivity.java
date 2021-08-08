@@ -3,6 +3,7 @@ package com.example.fixengine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,14 +16,17 @@ import com.example.fixengine.model.ExecutionRequest;
 import com.example.fixengine.model.SingleOrderRequest;
 import com.example.fixengine.services.ExecutionService;
 
+/***
+ * This class is represent an order execution functionality.
+ */
 public class OrderExecutionActivity extends AppCompatActivity {
 
-    private SingleOrderRequest singleOrderRequest;
-    private ExecutionService executionService;
-    EditText execQuantityEditText;
-    EditText execPriceEditText;
-    Button acceptButton;
-    Button executeOrderButton;
+    private SingleOrderRequest singleOrderRequest; //Variable to store the single order request
+    private ExecutionService executionService; // Variable to store the object of ExecutionService
+    EditText execQuantityEditText;// Variable to store the edited quantity of executed order
+    EditText execPriceEditText; //Variable to store the edited price of executed order
+    Button acceptButton; //Variable of type Button to click on and can accept an order
+    Button executeOrderButton; //Variable of type Button to click on and can execute an order
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +41,30 @@ public class OrderExecutionActivity extends AppCompatActivity {
         executionService = new ExecutionService();
         setOrderDataOnActivity(orderRequest);
         if ("Order Pending for Execution".equalsIgnoreCase( orderRequest.getStatus() ) ||
-                "Sent for Execution".equalsIgnoreCase( orderRequest.getStatus() ) ) {
+                "Sent for Execution".equalsIgnoreCase( orderRequest.getStatus() ) ||
+         "Created".equalsIgnoreCase(orderRequest.getStatus())) {
+            acceptButton.setBackgroundColor(Color.parseColor("#3949AB"));
             acceptButton.setEnabled( true );
+            executeOrderButton.setBackgroundColor( Color.GRAY);
             executeOrderButton.setEnabled( false );
+            execQuantityEditText.setVisibility(View.INVISIBLE  );
+            execPriceEditText.setVisibility( View.INVISIBLE );
         } else {
+            acceptButton.setBackgroundColor(Color.GRAY);
             acceptButton.setEnabled( false );
+            executeOrderButton.setBackgroundColor(Color.parseColor("#3949AB"));
             executeOrderButton.setEnabled( true );
+            execQuantityEditText.setVisibility(View.VISIBLE  );
+            execPriceEditText.setVisibility( View.VISIBLE );
         }
         setActionOnAcceptOrder();
         setActionOnExecuteOrder();
     }
 
+    /***
+     * This method is used to set value of SingleOrderRequest variables which filled by user on UI
+     * @param singleOrderRequest variable to store data of type SingleOrderRequest
+     */
     private void setOrderDataOnActivity(SingleOrderRequest singleOrderRequest) {
         this.singleOrderRequest = singleOrderRequest;
         TextView orderId = findViewById( R.id.execOrderIdTextView );
@@ -74,9 +91,9 @@ public class OrderExecutionActivity extends AppCompatActivity {
                     executionRequest.setExecType( "New" );
                     executionRequest.setQuantityRequestedForExec( 0.0 );
                     executionRequest.setExecutionPrice( 0.0 );
-                    executionService.sendExecution( executionRequest );
-                    Intent orderStatusIntent = new Intent( OrderExecutionActivity.this, TradeOptionStatusPortofolioActivity.class );
-                    startActivity( orderStatusIntent );
+                    executionService.sendExecution( executionRequest,
+                            OrderExecutionActivity.this,
+                            "Order has been accepted successfully." );
                 }
             }
         } );
@@ -117,10 +134,9 @@ public class OrderExecutionActivity extends AppCompatActivity {
                         Toast.makeText( OrderExecutionActivity.this,
                                 "Please Enter valid quantity for execution.", Toast.LENGTH_LONG).show();
                     } else {
-                        executionService.sendExecution( executionRequest );
-                        Intent orderStatusIntent = new Intent( OrderExecutionActivity.this,
-                                TradeOptionStatusPortofolioActivity.class );
-                        startActivity( orderStatusIntent );
+                        executionService.sendExecution( executionRequest,
+                                OrderExecutionActivity.this,
+                                "Order has been Executed successfully." );
                     }
                 }
             }

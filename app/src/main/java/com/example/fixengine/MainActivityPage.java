@@ -4,24 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.fixengine.services.RestSignupLoginService;
+
 
 public class MainActivityPage extends AppCompatActivity {
-    private Button signupButton;
-    private Button loginButton;
+    private RestSignupLoginService restSignupLoginService;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main_page );
+        restSignupLoginService = new RestSignupLoginService();
         signupPage();
         loginPage();
 
     }
 
     private  void signupPage() {
-        signupButton = findViewById( R.id.signUpMainPagebutton );
+        Button signupButton = findViewById( R.id.signUpMainPagebutton );
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,14 +41,26 @@ public class MainActivityPage extends AppCompatActivity {
     }
 
     private void loginPage() {
-        loginButton = findViewById( R.id.loginButton );
+        Button loginButton = findViewById( R.id.loginButton );
+        EditText emailEditText = findViewById( R.id.emailIdEditText);
+        EditText passwordEditTest = findViewById( R.id.passwordEdittext);
         loginButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent loginIntent = new Intent(MainActivityPage.this,TradeOptionStatusPortofolioActivity.class);
-                startActivity( loginIntent );
+                String emailIdValue = emailEditText.getText().toString().trim();
+                String passwordValue = passwordEditTest.getText().toString().trim();
+                if(emailIdValue.isEmpty() || passwordValue.isEmpty()) {
+                    Toast.makeText( MainActivityPage.this,
+                            "One of required credential is empty.", Toast.LENGTH_LONG).show();
+                } else {
+                    String userInput = emailIdValue + ":" + passwordValue;
+                    String authHeaderString = "Basic " + Base64.encodeToString( userInput.getBytes(), Base64.NO_WRAP );
+                    restSignupLoginService.login( authHeaderString, MainActivityPage.this );
+                }
             }
         } );
     }
+
+
 
 }

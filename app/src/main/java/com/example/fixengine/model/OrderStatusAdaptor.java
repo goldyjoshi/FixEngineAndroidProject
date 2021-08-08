@@ -2,8 +2,10 @@ package com.example.fixengine.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.StackView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,28 +24,34 @@ import com.example.fixengine.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * This class is to represent the adopter for recycler view of order status and its fields.
+ * @author vijayshreejoshi
+ */
 public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.OrderStatusViewHolder>
         implements Filterable {
 
     private Context context; //Variable of type Context
     private List<SingleOrderRequest> orderList; //Variable to store the list of type single order request.
-    private List<SingleOrderRequest> listOfAllOrders;
+    private List<SingleOrderRequest> listOfAllOrders; // Variable to store the single order request
+    private String loginRole; // variable to store the login role either is Trader ot broker
 
     /***
      * Constructor to initialized OrderStatusAdaptor data fields and its parent Adaptor and implements Filterable
      * @param context unique value of context
      * @param orderList unique representation of list of order
      */
-    public OrderStatusAdaptor(Context context, List<SingleOrderRequest> orderList) {
+    public OrderStatusAdaptor(Context context, List<SingleOrderRequest> orderList, String loginRole) {
         this.context=context;
         this.orderList = orderList;
         this.listOfAllOrders = new ArrayList<>(orderList);
+        this.loginRole = loginRole;
     }
 
     /***
      * This method is override from implements  Filterable class and its inflate the layout
-     * @param parent
-     * @param viewType
+     * @param parent to store the object of class ViewGroup
+     * @param viewType to store viewType of integer
      * @return viewHolder of type OrderStatusViewHolder
      */
     @NonNull
@@ -55,8 +64,8 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
     }
 
     /***
-     *
-     * @param holder
+     *This method is Called by RecyclerView to display the data at the specified position.
+     * @param holder of type OrderStatusViewHolder
      * @param position unique value of type int
      */
     @Override
@@ -72,7 +81,8 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         holder.symbol.setText(orderRequest.getSymbol());
         holder.side.setText(orderRequest.getSide());
         holder.status.setText( orderRequest.getStatus() );
-        if ("Order Completed".equalsIgnoreCase( orderRequest.getStatus())) {
+        if ("Order Completed".equalsIgnoreCase( orderRequest.getStatus()) || "Trader".equalsIgnoreCase( loginRole )) {
+            holder.execButton.setBackgroundColor( Color.GRAY );
             holder.execButton.setEnabled( false );
         }
         /***
@@ -95,7 +105,7 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
 
     /***
      * This method is used to get size of list of order.
-     * @return
+     * @return size of list of order
      */
     @Override
     public int getItemCount(){
@@ -111,6 +121,11 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         return orderFilter;
     }
 
+    /***
+     * This method is to create a instance of Filter class on condtion if parameter of charSequence
+     * of method performFiltering, is null then it will add in list otherwise loop through the single
+     * order request and if parameter containdin signle order then it should be ad din list.
+     */
     private Filter orderFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
@@ -141,6 +156,9 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
     };
 
 
+    /***
+     * This class is used to represent the each item in recyclerView on its place.
+     */
     public class OrderStatusViewHolder extends RecyclerView.ViewHolder {
         TextView orderId;
         TextView status;
@@ -164,10 +182,18 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         }
     }
 
+    /***
+     * This method is used to get list of all current order of type single order.
+     * @return list of order
+     */
     public List<SingleOrderRequest> getCurrrentOrderList() {
         return orderList;
     }
 
+    /***
+     * This method is used to get full order list
+     * @return list of all order of type single order list.
+     */
     public List<SingleOrderRequest> getFullOrderList() {
         return listOfAllOrders;
     }

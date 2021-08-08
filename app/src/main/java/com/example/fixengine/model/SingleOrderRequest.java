@@ -3,14 +3,19 @@ package com.example.fixengine.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/***
+ * Class represent the SingleOrderRequest and its field orderId, accountId, quantity, symbol
+ * side, executedQuantity and status
+ * @author vijayshreejoshi
+ */
 public class SingleOrderRequest implements Parcelable {
-    private String orderId; //Variable to store unique value of order id
-    private String accountId; // Variable to store unique value of account id
-    private double quantity; //Variable to store quantity of order
-    private String symbol; //Variable to store name of symbol
-    private String side; //Variable to represent the value of side
-    private double executedQuantity; //Variable to represent the quantity of executed order
-    private String status; // variable to represnt the status of order
+    private String orderId; //Variable to store the unique value of order Id.
+    private String accountId; //Variable to store the unique value of account Id.
+    private double quantity; //Variable to store the unique value of quantity of requested order.
+    private double executedQuantity; //Variable to store the unique value of executed quantity of requested order.
+    private String status; //Variable to represent the unique value of status of order.
+    private String symbol; //Variable to represent the unique value of symbol.
+    private String side; //Variable to represent the unique value of side(buy/sell).
 
     /***
      * Empty construct for a class to create new instances
@@ -18,7 +23,6 @@ public class SingleOrderRequest implements Parcelable {
     public SingleOrderRequest() {
 
     }
-
 
     protected SingleOrderRequest(Parcel in) {
         orderId = in.readString();
@@ -58,59 +62,37 @@ public class SingleOrderRequest implements Parcelable {
         }
     };
 
+    /***
+     * This method is used to get executed quantity of order.
+     * @return value of executedQuantity of type double
+     */
     public double getExecutedQuantity() {
         return executedQuantity;
     }
 
+    /***
+     * This method is used to set execu†ed quantity of order.
+     * @param executedQuantity variable to store unique value of executedQuantity
+     */
     public void setExecutedQuantity(double executedQuantity) {
         this.executedQuantity = executedQuantity;
     }
 
+    /***
+     * This method is used to get Status of submit order.
+     * @return
+     */
     public String getStatus() {
         return status;
     }
 
+    /***
+     * This method is used to set value of status of order.
+     * @param status variable to store status of order.
+     */
     public void setStatus(String status) {
         this.status = status;
     }
-
-//    protected SingleOrderRequest(Parcel in) {
-//        orderId = in.readString();
-//        accountId = in.readString();
-//        quantity = in.readDouble();
-//        symbol = in.readString();
-//        side = in.readString();
-//        executedQuantity = in.readDouble();
-//        status = in.readString();
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeString( orderId );
-//        dest.writeString( accountId );
-//        dest.writeDouble( quantity );
-//        dest.writeString( symbol );
-//        dest.writeString( side );
-//        dest.writeDouble( executedQuantity );
-//        dest.writeString( status );
-//    }
-
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    public static final Creator<SingleOrderRequest> CREATOR = new Creator<SingleOrderRequest>() {
-//        @Override
-//        public SingleOrderRequest createFromParcel(Parcel in) {
-//            return new SingleOrderRequest( in );
-//        }
-//
-//        @Override
-//        public SingleOrderRequest[] newArray(int size) {
-//            return new SingleOrderRequest[size];
-//        }
-//    };
 
     /***
      *  This method is used to get Id of order

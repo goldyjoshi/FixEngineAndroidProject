@@ -6,48 +6,77 @@ package com.example.fixengine.model;
  */
 public class TraderLoginDetails {
 
-    private String traderEmailId;
-    private String password;
+    private String loginStatus; //Variable to store unique value of login status of user.
+    private String loginRole; //Variable to store unique value of login role of user (Trader/Broker).
+    private String employeeId; //Variable to store unique value of employee Id.
 
     /***
      * Constructor to initialize the fields of TraderLoginDetails class.
-     * @param traderEmailId  //string value of email id
-     * @param password //unique string value of  trader's password
+     * @param employeeId string value of employee id
+     * @param loginRole unique string value of  trader's password
+     * @param loginStatus current status of login.
+     * @
      */
-    public TraderLoginDetails(String traderEmailId, String password) {
-        this.traderEmailId = traderEmailId;
-        this.password = password;
+    public TraderLoginDetails(final String employeeId, final String loginStatus, final String loginRole ) {
+        this.employeeId = employeeId;
+        this.loginStatus = loginStatus;
+        this.loginRole = loginRole;
+    }
+
+    /***
+     * This method is used to get value of employee id
+     * @return String value of employeeId
+     */
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    /***
+     * This method is used to set value employee Id
+     * @param employeeId unique value of employee id
+     */
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
     /***
      * This method is used to get value of trader email id
-     * @return Steing value of traderEmailId
+     * @return String value of traderEmailId
      */
-    public String getTraderEmailId() {
-        return traderEmailId;
+    public String getLoginStatus() {
+        return loginStatus;
     }
 
     /***
      * This method is used to set value trader's email Id
-     * @param traderEmailId unique value of mail id
+     * @param loginStatus unique value of mail id
      */
-    public void setTraderEmailId(String traderEmailId) {
-        this.traderEmailId = traderEmailId;
+    public void setLoginStatus(String loginStatus) {
+        this.loginStatus = loginStatus;
     }
 
     /***
-     * Methiod is used to get unique value of password
+     * Method is used to get unique value of password
      * @return String value of password
      */
-    public String getPassword() {
-        return password;
+    public String getLoginRole() {
+        return loginRole;
     }
 
     /***
-     * Methios is used to set unique vlaue of password
-     * @param password unique value of trader's password
+     * Method is used to set unique value of password
+     * @param loginRole unique value of trader's password
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLoginRole(String loginRole) {
+        this.loginRole = loginRole;
+    }
+
+    @Override
+    public String toString() {
+        return "TraderLoginDetails{" +
+                "traderEmailId='" + loginStatus + '\'' +
+                ", traderPassword='" + loginRole + '\'' +
+                ", employeeId='" + employeeId + '\'' +
+                '}';
     }
 }

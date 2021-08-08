@@ -1,5 +1,10 @@
 package com.example.fixengine.model;
 
+/***
+ * Class represent the ExecutionRequest and its field orderId, accountId, totalQuantity, symbol,
+ * side, quantityRequestedForExec, previousExecQuantity, executionPrice and execType.
+ * @author vijayshreejoshi
+ */
 public class ExecutionRequest {
     private String orderId; //Variable to  store order Id
     private String accountId; //Variable to store account Id.
@@ -22,7 +27,7 @@ public class ExecutionRequest {
 
     /***
      * This method is used to set value of quantityRequestedForExec.
-     * @param quantityRequestedForExec
+     * @param quantityRequestedForExec to represent requested quantity for order
      */
     public void setQuantityRequestedForExec(double quantityRequestedForExec) {
         this.quantityRequestedForExec = quantityRequestedForExec;
@@ -38,7 +43,7 @@ public class ExecutionRequest {
 
     /***
      * This method is used to set value of previousExecQuantity.
-     * @param previousExecQuantity
+     * @param previousExecQuantity to represent the previous executed quantity
      */
     public void setPreviousExecQuantity(double previousExecQuantity) {
         this.previousExecQuantity = previousExecQuantity;
@@ -52,6 +57,10 @@ public class ExecutionRequest {
         return execType;
     }
 
+    /***
+     * This method is used to set type of execution either it is partial or full
+     * @param execType to represent the either the order is partially executed or completely.
+     */
     public void setExecType(String execType) {
         this.execType = execType;
     }
@@ -66,7 +75,7 @@ public class ExecutionRequest {
 
     /***
      * This method is used to set value of orderId.
-     * @param orderId
+     * @param orderId unique value of id of order
      */
     public void setOrderId(String orderId) {
         this.orderId = orderId;
@@ -82,7 +91,7 @@ public class ExecutionRequest {
 
     /***
      * This method is used to set value of account id.
-     * @param accountId
+     * @param accountId to represent the Id of  client account
      */
     public void setAccountId(String accountId) {
         this.accountId = accountId;
@@ -112,12 +121,16 @@ public class ExecutionRequest {
         return symbol;
     }
 
+    /***
+     * This function is used to set symbol value.
+     * @param symbol variable o store name of symbol
+     */
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
     /***
-     * this function is used to get side(type) of order means is it buy or sell.
+     * This function is used to get side(type) of order means is it buy or sell.
      * @return String value of side(buy/sell)
      */
     public String getSide() {
@@ -126,7 +139,7 @@ public class ExecutionRequest {
 
     /***
      * This method is used to set value of Side as buy or sell.
-     * @param side
+     * @param side to represent the side of user(buy/sell)
      */
     public void setSide(String side) {
         this.side = side;
@@ -142,7 +155,7 @@ public class ExecutionRequest {
 
     /***
      * This method is used to set value of price of executed order
-     * @param executionPrice
+     * @param executionPrice to represent the price for symbol to be executed
      */
     public void setExecutionPrice(double executionPrice) {
         this.executionPrice = executionPrice;

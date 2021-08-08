@@ -7,64 +7,61 @@
     tools:context=".TradeOptionStatusPortofolioActivity">
 
     <Button
-        android:id="@+id/portfolioButton"
+        android:id="@+id/placeOrderButton"
         android:layout_width="158dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="42dp"
-        android:text="See Portfolio"
+        android:layout_height="53dp"
+        android:layout_marginTop="228dp"
+        android:backgroundTint="#3949AB"
+        android:text="Place a Trade"
+        android:textColorHint="#E9232020"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <Button-->
+<!--        android:id="@+id/backFromOptionScreenButton"-->
+<!--        android:layout_width="86dp"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:layout_marginEnd="24dp"-->
+<!--        android:layout_marginBottom="120dp"-->
+<!--        android:backgroundTint="0.05"-->
+<!--        android:backgroundTintMode=-->
+<!--        android:text="Back"-->
+<!--        android:textColor="#5E35B1"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
+
+    <Button
+        android:id="@+id/orderStatusButton"
+        android:layout_width="167dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#3949AB"
+        android:text="Order Status / See Portfolio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/placeOrderButton" />
 
     <Button
-        android:id="@+id/placeOrderButton"
-        android:layout_width="159dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="150dp"
-        android:text="Place a Trade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/logoutButton"
+        android:layout_width="101dp"
+        android:layout_height="45dp"
         android:layout_marginTop="42dp"
-        android:text="Button"
+        android:backgroundTint="#3949AB"
+        android:text="LOGOUT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderStatusButton" />
 
-    <Button
-        android:id="@+id/backFromOptionScreenButton"
-        android:layout_width="86dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="120dp"
-        android:backgroundTint="#FFB300"
-        android:backgroundTintMode="add"
-        android:text="Back"
-        android:textColor="#5E35B1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/orderStatusButton"
-        android:layout_width="151dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="42dp"
-        android:text="Order Status"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="167dp"
+        android:layout_height="159dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/portfolioButton" />
-
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="96dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
-        android:text="LOGOUT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fixengine" />
 </androidx.constraintlayout.widget.ConstraintLayout>
