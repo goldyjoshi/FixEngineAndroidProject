@@ -25,6 +25,7 @@ import retrofit2.Retrofit;
 
 /***
  * This class will represent order service of executed order.
+ * @author vijayshreejoshi
  */
 public class OrderService {
 
@@ -38,7 +39,6 @@ public class OrderService {
         retrofitRestClient = new RetrofitRestClient();
         Retrofit retrofit = retrofitRestClient.getRetrofitRestClient();
         iOrderSubmissionServiceAPI = retrofit.create(IOrderSubmissionServiceAPI.class);
-
     }
 
     /***
@@ -82,7 +82,7 @@ public class OrderService {
     }
 
     /***
-     * This methos is used to submit  single order and override onResponse method
+     * This method is used to submit  single order and override onResponse method
      * success if execution success and onFailure when execution failed.
      * @param singleOrderRequest unique representation of single order request
      * @param context to store the context of method

@@ -10,6 +10,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
+/***
+ * This interface is used to post the signup details.
+ */
 public interface ISignupLoginServiceAPI {
     @POST("signup")
     Call<TradeDetails> signup(@Body TradeDetails tradeDetails);

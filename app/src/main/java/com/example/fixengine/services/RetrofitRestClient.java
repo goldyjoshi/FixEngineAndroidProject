@@ -28,8 +28,8 @@ public class RetrofitRestClient {
                 .build();
 
         retrofitForBroker = new Retrofit.Builder()
-                .baseUrl( "http://192.168.0.8:8092/")
-//                .baseUrl( "http://192.168.0.94:8092/")
+//                .baseUrl( "http://192.168.0.8:8092/")
+                .baseUrl( "http://192.168.0.94:8092/")
                 .addConverterFactory( GsonConverterFactory.create())
                 .build();
     }

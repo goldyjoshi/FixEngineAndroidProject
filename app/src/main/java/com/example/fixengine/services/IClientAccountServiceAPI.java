@@ -11,6 +11,7 @@ import retrofit2.http.POST;
 
 /***
  * This interface used to implements abstraction of clients list.
+ * @author vijayshreejoshi
  */
 public interface IClientAccountServiceAPI {
 

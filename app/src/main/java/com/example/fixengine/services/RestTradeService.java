@@ -15,7 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//dont'use
+//not in use this class
 public class RestTradeService {
 
     private String tradesAsString = "";

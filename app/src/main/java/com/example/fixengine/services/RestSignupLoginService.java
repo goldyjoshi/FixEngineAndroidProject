@@ -17,6 +17,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/***
+ * This class represent the rest services for login and signup.
+ * @author vijayshreejoshi
+ */
 public class RestSignupLoginService {
 
     private RetrofitRestClient retrofitRestClient;
@@ -28,6 +32,11 @@ public class RestSignupLoginService {
         iSignupLoginServiceAPI = retrofit.create(ISignupLoginServiceAPI.class);
     }
 
+    /***
+     * This method show signup functionality for employee
+     * @param tradeDetails unique value of trader details.
+     * @param context
+     */
     public void signup(TradeDetails tradeDetails, Context context) {
         Call<TradeDetails> tradeDetailsCall = iSignupLoginServiceAPI.signup(tradeDetails);
 

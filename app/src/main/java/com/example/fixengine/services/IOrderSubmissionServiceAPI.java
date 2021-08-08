@@ -10,7 +10,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /***
- * This interface is used to post the execution report.
+ * This interface is used to post order to submit..
+ *
  */
 public interface IOrderSubmissionServiceAPI {
 
