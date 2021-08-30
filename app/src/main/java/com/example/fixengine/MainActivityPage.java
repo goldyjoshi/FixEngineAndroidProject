@@ -1,7 +1,5 @@
 package com.example.fixengine;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
@@ -11,13 +9,23 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fixengine.services.RestSignupLoginService;
 
-
+/***
+ * This class is to represent the main activity of application
+ *and have instructions to be executed at the apps launch.
+ * @author vijayshreejoshi
+ */
 public class MainActivityPage extends AppCompatActivity {
     private RestSignupLoginService restSignupLoginService;
-    ImageView imageView;
+    private ImageView imageView; //Variable to store the image view.
 
+    /***
+     * Method get called when activity starts.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -25,10 +33,12 @@ public class MainActivityPage extends AppCompatActivity {
         restSignupLoginService = new RestSignupLoginService();
         signupPage();
         loginPage();
-
     }
 
-    private  void signupPage() {
+    /***This method is used to signup in the system and override its onclick method, it intent
+    * activity and  open new activity.
+    */
+    private void signupPage() {
         Button signupButton = findViewById( R.id.signUpMainPagebutton );
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -40,6 +50,9 @@ public class MainActivityPage extends AppCompatActivity {
         } );
     }
 
+    /***This method is used to get login details and override method of setOnClickListener
+     * to authenticate loin details if all fields are right otherwise login fail message will notify to user.
+     */
     private void loginPage() {
         Button loginButton = findViewById( R.id.loginButton );
         EditText emailEditText = findViewById( R.id.emailIdEditText);
@@ -60,7 +73,5 @@ public class MainActivityPage extends AppCompatActivity {
             }
         } );
     }
-
-
 
 }

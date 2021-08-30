@@ -1,7 +1,6 @@
 package com.example.fixengine.services;
 
 import com.example.fixengine.model.ExecutionRequest;
-import com.example.fixengine.model.SingleOrderRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -20,4 +19,5 @@ public interface IExecutionServiceAPI {
      */
     @POST("execution")
     Call<Boolean> sendExecution(@Body ExecutionRequest executionRequest);
+
 }

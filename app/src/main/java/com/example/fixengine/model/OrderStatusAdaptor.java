@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.StackView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -155,9 +152,8 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
         }
     };
 
-
     /***
-     * This class is used to represent the each item in recyclerView on its place.
+     * This inner class is used to represent the each item in recyclerView on its place.
      */
     public class OrderStatusViewHolder extends RecyclerView.ViewHolder {
         TextView orderId;
@@ -197,4 +193,20 @@ public class OrderStatusAdaptor extends RecyclerView.Adapter<OrderStatusAdaptor.
     public List<SingleOrderRequest> getFullOrderList() {
         return listOfAllOrders;
     }
+
+    /***
+     * String representation of class.
+     * @return value of all fields as a string.
+     */
+    @Override
+    public String toString() {
+        return "OrderStatusAdaptor{" +
+                "context=" + context +
+                ", orderList=" + orderList +
+                ", listOfAllOrders=" + listOfAllOrders +
+                ", loginRole='" + loginRole + '\'' +
+                ", orderFilter=" + orderFilter +
+                '}';
+    }
+
 }

@@ -13,4 +13,5 @@ public interface ISymbolServiceAPI {
 
     @GET("symbols")
     Call<List<String>> getSymbols();
+
 }

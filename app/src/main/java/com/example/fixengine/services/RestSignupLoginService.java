@@ -6,9 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.fixengine.MainActivityPage;
-import com.example.fixengine.SignupActivity;
 import com.example.fixengine.TradeOptionStatusPortofolioActivity;
-import com.example.fixengine.model.DataUtility;
 import com.example.fixengine.model.TradeDetails;
 import com.example.fixengine.model.TraderLoginDetails;
 
@@ -29,7 +27,7 @@ public class RestSignupLoginService {
     public RestSignupLoginService() {
         retrofitRestClient = new RetrofitRestClient();
         Retrofit retrofit = retrofitRestClient.getRetrofitRestClient();
-        iSignupLoginServiceAPI = retrofit.create(ISignupLoginServiceAPI.class);
+        iSignupLoginServiceAPI = retrofit.create( ISignupLoginServiceAPI.class );
     }
 
     /***
@@ -38,49 +36,48 @@ public class RestSignupLoginService {
      * @param context
      */
     public void signup(TradeDetails tradeDetails, Context context) {
-        Call<TradeDetails> tradeDetailsCall = iSignupLoginServiceAPI.signup(tradeDetails);
+        Call<TradeDetails> tradeDetailsCall = iSignupLoginServiceAPI.signup( tradeDetails );
 
         tradeDetailsCall.enqueue( new Callback<TradeDetails>() {
             @Override
             public void onResponse(Call<TradeDetails> call, Response<TradeDetails> response) {
                 if (!response.isSuccessful()) {
-                    System.out.println("Failed to Register with message :" + response.message() +
-                            " Code : " + response.code());
+                    System.out.println( "Failed to Register with message :" + response.message() +
+                            " Code : " + response.code() );
                     return;
                 }
-                String  msg = "Request Body containing: " + response.body();
+                String msg = "Request Body containing: " + response.body();
                 Toast.makeText( context, "You have successfully signup.", Toast.LENGTH_SHORT ).show();
-                Intent intentLoginScreen = new Intent(context, MainActivityPage.class);
-                context.startActivity(intentLoginScreen);
+                Intent intentLoginScreen = new Intent( context, MainActivityPage.class );
+                context.startActivity( intentLoginScreen );
                 Log.println( Log.INFO, "signup", msg );
             }
 
             @Override
             public void onFailure(Call<TradeDetails> call, Throwable t) {
                 Toast.makeText( context, "Signup request has been failed. Please try again.", Toast.LENGTH_SHORT ).show();
-                System.out.println("Failed to Register with exception :" + t.getMessage());
+                System.out.println( "Failed to Register with exception :" + t.getMessage() );
             }
         } );
     }
 
-
     /***..........***/
 
-    public void login(final String  authHeaderValue, final Context context) {
+    public void login(final String authHeaderValue, final Context context) {
         Call<TraderLoginDetails> traderLoginDetailsCall = iSignupLoginServiceAPI.login( authHeaderValue );
         traderLoginDetailsCall.enqueue( (new Callback<TraderLoginDetails>() {
             @Override
             public void onResponse(Call<TraderLoginDetails> call, Response<TraderLoginDetails> response) {
                 if (!response.isSuccessful()) {
-                    System.out.println("Unsuccessful login with message :" + response.message() +
-                            " Code : " + response.code());
+                    System.out.println( "Unsuccessful login with message :" + response.message() +
+                            " Code : " + response.code() );
                     return;
                 }
-                String  msg = "Request Body containing: " + response.body();
-                if ("failed".equalsIgnoreCase(  response.body().getLoginStatus())) {
+                String msg = "Request Body containing: " + response.body();
+                if ("failed".equalsIgnoreCase( response.body().getLoginStatus() )) {
                     Toast.makeText( context,
                             "Login failed. One of the credential is not correct.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG ).show();
                 } else {
                     Intent loginIntent = new Intent( context, TradeOptionStatusPortofolioActivity.class );
                     loginIntent.putExtra( "role", response.body().getLoginRole() );
@@ -91,8 +88,9 @@ public class RestSignupLoginService {
 
             @Override
             public void onFailure(Call<TraderLoginDetails> call, Throwable t) {
-                System.out.println("Failed to login with exception :" + t.getMessage());
+                System.out.println( "Failed to login with exception :" + t.getMessage() );
             }
         }) );
     }
+
 }

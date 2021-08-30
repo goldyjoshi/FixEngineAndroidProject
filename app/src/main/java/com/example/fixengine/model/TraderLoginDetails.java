@@ -1,5 +1,7 @@
 package com.example.fixengine.model;
 
+import java.util.Objects;
+
 /***
  * Class represent the TraderLoginDetails and its field traderEmailId and password
  * @author vijayshreejoshi
@@ -71,12 +73,41 @@ public class TraderLoginDetails {
         this.loginRole = loginRole;
     }
 
+    /***
+     * String representation of class.
+     * @return value of all fields as a string.
+     */
     @Override
     public String toString() {
         return "TraderLoginDetails{" +
-                "traderEmailId='" + loginStatus + '\'' +
-                ", traderPassword='" + loginRole + '\'' +
+                "loginStatus='" + loginStatus + '\'' +
+                ", loginRole='" + loginRole + '\'' +
                 ", employeeId='" + employeeId + '\'' +
                 '}';
     }
+
+    /***
+     * To compare quality of two object of TraderLoginDetails.
+     * @param o to be compare
+     * @return true if two object are equal else false.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TraderLoginDetails)) return false;
+        TraderLoginDetails that = (TraderLoginDetails) o;
+        return Objects.equals( loginStatus, that.loginStatus ) &&
+                Objects.equals( loginRole, that.loginRole ) &&
+                Objects.equals( employeeId, that.employeeId );
+    }
+
+    /***
+     * Generate unique code for each object.
+     * @return unique hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash( loginStatus, loginRole, employeeId );
+    }
+
 }

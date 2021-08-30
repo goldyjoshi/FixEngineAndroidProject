@@ -1,11 +1,14 @@
 package com.example.fixengine.model;
 
+import java.util.Objects;
+
 /***
  * This class is represent the fields of trade details as traderEmployeeId, traderEmailId,
  * traderPassword, loginRole.
  * @author vijayshreejoshi
  */
 public class TradeDetails {
+
     private String traderEmployeeId; // variable to store trder employee id of type String.
     private String traderEmailId;   // variable to store trder email id of type String.
     private String traderPassword;  // variable to store trder password id of type String.
@@ -88,4 +91,44 @@ public class TradeDetails {
     public void setLoginRole(String loginRole) {
         this.loginRole = loginRole;
     }
+
+    /***
+     * String representation of class.
+     * @return value of all fields as a string.
+     */
+    @Override
+    public String toString() {
+        return "TradeDetails{" +
+                "traderEmployeeId='" + traderEmployeeId + '\'' +
+                ", traderEmailId='" + traderEmailId + '\'' +
+                ", traderPassword='" + traderPassword + '\'' +
+                ", loginRole='" + loginRole + '\'' +
+                '}';
+    }
+
+    /***
+     * To compare quality of two object of TraderDetails.
+     * @param o to be compare
+     * @return true if two object are equal else false.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TradeDetails)) return false;
+        TradeDetails that = (TradeDetails) o;
+        return traderEmployeeId.equals( that.traderEmployeeId ) &&
+                traderEmailId.equals( that.traderEmailId ) &&
+                traderPassword.equals( that.traderPassword ) &&
+                loginRole.equals( that.loginRole );
+    }
+
+    /***
+     * Generate unique code for each object.
+     * @return unique hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash( traderEmployeeId, traderEmailId, traderPassword, loginRole );
+    }
+
 }

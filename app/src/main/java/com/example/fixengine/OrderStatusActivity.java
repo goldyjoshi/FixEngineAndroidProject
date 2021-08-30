@@ -1,9 +1,5 @@
 package com.example.fixengine;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +8,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixengine.model.OrderStatusAdaptor;
 import com.example.fixengine.model.SingleOrderRequest;
@@ -23,12 +20,20 @@ import com.example.fixengine.services.OrderService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is to represent the OrderStatusActivity and its fields.
+ * @author vijayshreejoshi
+ */
 public class OrderStatusActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    OrderStatusAdaptor orderStatusAdaptor;
-    String loginRole;
+    RecyclerView recyclerView; //To represent the variable of RecyclerView
+    OrderStatusAdaptor orderStatusAdaptor;//To represent the variable of type orderStatusAdaptor
+    String loginRole;//To represent the value of variable of type String.
 
+    /***
+     * Method get called when activity starts.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -38,6 +43,10 @@ public class OrderStatusActivity extends AppCompatActivity {
         setOrderList();
     }
 
+    /***
+     * Method get called when options menu get initialized on startup of activity.
+     * @param menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -77,12 +86,14 @@ public class OrderStatusActivity extends AppCompatActivity {
         return true;
     }
 
+    /***
+     * This methios is used to set list of order.
+     */
     private void setOrderList() {
         OrderService orderService = new OrderService();
         List<SingleOrderRequest> orderList = new ArrayList<>();
         orderStatusAdaptor = new OrderStatusAdaptor(OrderStatusActivity.this, orderList, loginRole);
         orderService.setOrders(OrderStatusActivity.this, recyclerView, orderStatusAdaptor);
     }
-
 
 }

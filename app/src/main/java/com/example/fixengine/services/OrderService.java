@@ -4,20 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.fixengine.OrderStatusActivity;
-import com.example.fixengine.R;
-import com.example.fixengine.SubmitOrderActivity;
-import com.example.fixengine.TradeOptionStatusPortofolioActivity;
 import com.example.fixengine.model.OrderStatusAdaptor;
 import com.example.fixengine.model.SingleOrderRequest;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
