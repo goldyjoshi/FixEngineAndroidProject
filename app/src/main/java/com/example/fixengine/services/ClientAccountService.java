@@ -1,13 +1,6 @@
 package com.example.fixengine.services;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
-import com.example.fixengine.R;
-import com.example.fixengine.SubmitOrderActivity;
 
 import java.util.List;
 
@@ -29,7 +22,6 @@ public class ClientAccountService {
     /***
      * Constructor to create instance of data field of ClientAccountService
      */
-
     public ClientAccountService() {
         retrofitRestClient = new RetrofitRestClient();
         Retrofit retrofit = retrofitRestClient.getRetrofitRestClient();
@@ -76,4 +68,5 @@ public class ClientAccountService {
             }
         } );
     }
+
 }

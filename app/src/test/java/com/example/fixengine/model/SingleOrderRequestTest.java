@@ -6,43 +6,47 @@ import org.junit.Test;
 
 public class SingleOrderRequestTest {
 
-    private SingleOrderRequest singleOrderRequest;
-
-    @Before
-    public void init() {
-        singleOrderRequest = new SingleOrderRequest();
-    }
-
     @Test
-    public void setAndGetAccountIDTest() {
-        final String expectedAccountId = "A456";
-        singleOrderRequest.setAccountId( expectedAccountId );
-        final String actualAccountId = singleOrderRequest.getAccountId();
-        Assert.assertEquals( "Actual and expected employee account ID  are not same,", expectedAccountId, actualAccountId );
-    }
+    public void singleOrderRequestGetterSetterTest() {
+        //Given
+        String orderIdModifiedValue = "Test1234";
+        String accountIdModifiedValue = "AC12345";
+        double quantityModifiedValue = 101.5;
+        double executedQuantityModifiedValue = 70.5;
+        String statusModifiedValue = "Created";
+        String symbolModifiedValue = "Apple";
+        String sideModifiedValue = "Buy" ;
 
-    @Test
-    public void setAndGetQuantityTest() {
-        final double expectedQuantity = 56.2;
-        singleOrderRequest.setQuantity( expectedQuantity );
-        final double actualQuantity = singleOrderRequest.getQuantity();
-        Assert.assertEquals( "Actual and expected quantity  are not same.", expectedQuantity, actualQuantity, 0.0 );
-    }
+        // When object of SingleOrderRequest created,
+        SingleOrderRequest singleOrderRequest = new SingleOrderRequest();
 
-    @Test
-    public void setAndGetExecutedQuantity() {
-        final double expectedExecutedQuantity = 24.5;
-        singleOrderRequest.setExecutedQuantity( expectedExecutedQuantity );
-        final double actualExecutedQuantity = singleOrderRequest.getExecutedQuantity();
-        Assert.assertEquals( "Actual and expected quantity  are not same.", expectedExecutedQuantity, actualExecutedQuantity, 0.0 );
-    }
+        // Then check initial value
+        Assert.assertNull(singleOrderRequest.getOrderId());
+        Assert.assertNull(singleOrderRequest.getStatus());
+        Assert.assertNull(singleOrderRequest.getSide());
+        Assert.assertNull(singleOrderRequest.getSymbol());
+        Assert.assertNull(singleOrderRequest.getAccountId());
+        Assert.assertEquals(singleOrderRequest.getQuantity(), 0.0,0.0);
+        Assert.assertEquals(singleOrderRequest.getExecutedQuantity(), 0.0, 0.0);
 
-    @Test
-    public void setAndGetSymbolTest() {
-        final String expectedSymbol = "Facebook";
-        singleOrderRequest.setSymbol( expectedSymbol );
-        final String actualSymbol = singleOrderRequest.getSymbol();
-        Assert.assertEquals( "Actual and expected symbol  are not same,", expectedSymbol, actualSymbol );
+        // When initial value modified
+        singleOrderRequest.setOrderId(orderIdModifiedValue);
+        singleOrderRequest.setAccountId(accountIdModifiedValue);
+        singleOrderRequest.setStatus(statusModifiedValue);
+        singleOrderRequest.setSide(sideModifiedValue);
+        singleOrderRequest.setSymbol(symbolModifiedValue);
+        singleOrderRequest.setQuantity(quantityModifiedValue);
+        singleOrderRequest.setExecutedQuantity(executedQuantityModifiedValue);
+
+        // Then check modified value.
+        Assert.assertEquals(singleOrderRequest.getOrderId(), orderIdModifiedValue);
+        Assert.assertEquals(singleOrderRequest.getStatus(), statusModifiedValue);
+        Assert.assertEquals(singleOrderRequest.getSide(), sideModifiedValue);
+        Assert.assertEquals(singleOrderRequest.getSymbol(), symbolModifiedValue);
+        Assert.assertEquals(singleOrderRequest.getAccountId(), accountIdModifiedValue);
+        Assert.assertEquals(singleOrderRequest.getQuantity(), quantityModifiedValue, 0.0);
+        Assert.assertEquals(singleOrderRequest.getExecutedQuantity(), executedQuantityModifiedValue, 0.0);
+
     }
 
 

@@ -3,19 +3,18 @@ package com.example.fixengine.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Objects;
+
 /***
  * Class represent the SingleOrderRequest and its field orderId, accountId, quantity, symbol
  * side, executedQuantity and status
  * @author vijayshreejoshi
  */
-public class SingleOrderRequest implements Parcelable {
-    private String orderId; //Variable to store the unique value of order Id.
-    private String accountId; //Variable to store the unique value of account Id.
+public class SingleOrderRequest extends Request implements Parcelable {
+
     private double quantity; //Variable to store the unique value of quantity of requested order.
     private double executedQuantity; //Variable to store the unique value of executed quantity of requested order.
     private String status; //Variable to represent the unique value of status of order.
-    private String symbol; //Variable to represent the unique value of symbol.
-    private String side; //Variable to represent the unique value of side(buy/sell).
 
     /***
      * Empty construct for a class to create new instances
@@ -24,6 +23,10 @@ public class SingleOrderRequest implements Parcelable {
 
     }
 
+    /***
+     * Constructor is used by Parcelable to share object between activity.
+     * @param in reference to parcel object.
+     */
     protected SingleOrderRequest(Parcel in) {
         orderId = in.readString();
         accountId = in.readString();
@@ -95,39 +98,6 @@ public class SingleOrderRequest implements Parcelable {
     }
 
     /***
-     *  This method is used to get Id of order
-     * @return String vlaue of orderId
-     */
-    public String getOrderId() {
-        return orderId;
-    }
-
-    /***
-     * This method is used to set Id of order
-     * @param orderId unique value of orderId
-     */
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    /***
-     *  This method is used to get unique account id
-     * @return String value of accountId
-     */
-    public String getAccountId() {
-        return accountId;
-    }
-
-
-    /***
-     *  This method is used to set account id
-      * @param accountId unique represent the accountId
-     */
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    /***
      *  This method is used to get quantity of order
      * @return value of order quantity of double type
      */
@@ -144,36 +114,40 @@ public class SingleOrderRequest implements Parcelable {
     }
 
     /***
-     *  This method is used to get name of symbol
-     * @return String value of symbol
+     * String representation of class.
+     * @return value of all fields as a string.
      */
-    public String getSymbol() {
-        return symbol;
+    @Override
+    public String toString() {
+        return "SingleOrderRequest{" +
+                "orderId='" + orderId + '\'' +
+                ", accountId='" + accountId + '\'' +
+                ", quantity=" + quantity +
+                ", executedQuantity=" + executedQuantity +
+                ", status='" + status + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", side='" + side + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SingleOrderRequest)) return false;
+        if (!super.equals( o )) return false;
+        SingleOrderRequest that = (SingleOrderRequest) o;
+        return Double.compare( that.quantity, quantity ) == 0 &&
+                Double.compare( that.executedQuantity, executedQuantity ) == 0 &&
+                status.equals( that.status );
     }
 
     /***
-     * This method is used to set value of Symbol
-     * @param symbol represent uniquely
+     * Generate unique code for each object.
+     * @return unique hashcode.
      */
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    @Override
+    public int hashCode() {
+        return Objects.hash( super.hashCode(), quantity, executedQuantity, status );
     }
-
-    /***
-     *  This method is used to get value of side
-     * @return String value of side
-     */
-    public String getSide() {
-        return side;
-    }
-
-    /***
-     * This method is used to set value of side
-     * @param side unique representation of side(buy or sell)
-     */
-    public void setSide(String side) {
-        this.side = side;
-    }
-
 
 }

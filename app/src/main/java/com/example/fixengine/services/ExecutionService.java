@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.fixengine.OrderExecutionActivity;
 import com.example.fixengine.OrderStatusActivity;
-import com.example.fixengine.TradeOptionStatusPortofolioActivity;
 import com.example.fixengine.model.ExecutionRequest;
 
 import retrofit2.Call;
@@ -66,4 +64,5 @@ public class ExecutionService {
             }
         } );
     }
+
 }

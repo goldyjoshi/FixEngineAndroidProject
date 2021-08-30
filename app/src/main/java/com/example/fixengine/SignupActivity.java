@@ -1,7 +1,5 @@
 package com.example.fixengine;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +8,23 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fixengine.model.TradeDetails;
 import com.example.fixengine.services.RestSignupLoginService;
 
+/***
+ * This class is to represent the Signup Activity and fields signupButton, restSignupLoginService.
+ * @author vijayshreejoshi
+ */
 public class SignupActivity extends AppCompatActivity {
     private Button signupButton;
     private RestSignupLoginService restSignupLoginService;
 
+    /***
+     * Method get called when activity starts.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -24,9 +32,13 @@ public class SignupActivity extends AppCompatActivity {
         restSignupLoginService = new RestSignupLoginService();
         signupButton = findViewById( R.id.signUPButton );
         signupActivity();
-        cancleSignup();
+        cancelSignup();
     }
 
+    /***
+     * This method is used to signup as new user and provide a message to user with all checked condition true
+     * or notify successful if signup successful.
+     */
     public void signupActivity() {
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -55,13 +67,16 @@ public class SignupActivity extends AppCompatActivity {
         } );
     }
 
-    public void cancleSignup() {
+    /***
+     * This method is used to clear signup information if want to cancel.
+     */
+    public void cancelSignup() {
         Button cancel = findViewById( R.id.cancelSignuputton );
         cancel.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cancleSignupIntent = new Intent(SignupActivity.this, MainActivityPage.class);
-                startActivity( cancleSignupIntent );
+                Intent cancelSignupIntent = new Intent(SignupActivity.this, MainActivityPage.class);
+                startActivity( cancelSignupIntent );
             }
         } );
     }

@@ -1,8 +1,5 @@
 package com.example.fixengine;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fixengine.model.ExecutionRequest;
 import com.example.fixengine.model.SingleOrderRequest;
 import com.example.fixengine.services.ExecutionService;
 
 /***
- * This class is represent an order execution functionality.
+ * This class is represent an order execution functionality and its fields.
+ * @author vijayshreejoshi
  */
 public class OrderExecutionActivity extends AppCompatActivity {
 
@@ -28,12 +28,16 @@ public class OrderExecutionActivity extends AppCompatActivity {
     Button acceptButton; //Variable of type Button to click on and can accept an order
     Button executeOrderButton; //Variable of type Button to click on and can execute an order
 
+    /***
+     * Method get called when activity starts.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_order_execution );
         SingleOrderRequest orderRequest = getIntent().getParcelableExtra( "order" );
-        Log.println( Log.INFO, "execution", " Recived order is" + orderRequest.toString() );
+        Log.println( Log.INFO, "execution", " Received order is" + orderRequest.toString() );
         execQuantityEditText = findViewById( R.id.execQuantityEditText );
         execPriceEditText = findViewById( R.id.execPriceEditText );
         acceptButton = findViewById(R.id.AcceptOrder);
@@ -81,6 +85,9 @@ public class OrderExecutionActivity extends AppCompatActivity {
         execQtyId.setText( "Executed Quantity : " + singleOrderRequest.getExecutedQuantity() );
     }
 
+    /***
+     * This method is used to set an action on accept order with number of conditions and executions.
+     */
     private void setActionOnAcceptOrder() {
         acceptButton.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -99,6 +106,10 @@ public class OrderExecutionActivity extends AppCompatActivity {
         } );
     }
 
+    /***
+     * This method is used to set an action on execute order with different conditions and giving message
+     * on failure of action.
+     */
     private void setActionOnExecuteOrder() {
         executeOrderButton.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -143,6 +154,10 @@ public class OrderExecutionActivity extends AppCompatActivity {
         } );
     }
 
+    /***
+     * This method is used to set data of requested order for execution.
+     * @param executionRequest variable to store the execution request of type ExecutionRequest.
+     */
     private void setExecutionDataFromOrder(ExecutionRequest executionRequest) {
         executionRequest.setOrderId( singleOrderRequest.getOrderId() );
         executionRequest.setAccountId( singleOrderRequest.getAccountId() );
